@@ -1,0 +1,1 @@
+module "github.com/ch31212y/sakuraChatV2"

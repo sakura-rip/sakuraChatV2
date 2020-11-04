@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package talk;
+
+service TalkService {
+    rpc GetContact (GetContactRequest) returns (GetContactResponse);
+}
+
+message GetContactRequest {
+    string uuid = 1;
+}
+
+message GetContactResponse {
+    Contact contact = 1;
+}
+
+message Contact {
+    string uuid = 1;
+    string name = 2;
+    string over_written_name = 3;
+    map<string, string> medaData = 4;
+    FriendStatus status = 5;
+    reserved 6, 7;
+    repeated Tag tags = 8;
+}
+
+enum FriendStatus {
+    friend = 0;
+    block = 1;
+    delete = 2;
+}
+
+message Tag {
+    string name = 1;
+    string description = 2;
+    string color = 3;
+    string creator_uuid = 4;
+    int64 created_time = 5;
+}

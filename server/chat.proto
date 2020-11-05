@@ -10,11 +10,46 @@ service TalkService {
     rpc HideMessage (HideMessageRequest) returns (HideMessageResponse);
     rpc ReportMessage (ReportMessageRequest) returns (ReportMessageResponse);
 
+    //Contact func
     rpc GetContact (GetContactRequest) returns (GetContactResponse);
     rpc GetContacts (GetContactsRequest) returns (GetContactsResponse);
     rpc UpdateContact (UpdateContactRequest) returns (UpdateContactResponse);
     rpc BlockContact (BlockContactRequest) returns (BlockContactResponse);
     rpc ReportContact (ReportContactRequest) returns (ReportContactResponse);
+
+    rpc SendFriendRequest (SendFriendRequestRequest) returns (SendFriendRequestResponse);
+    rpc AcceptFriendRequest (AcceptFriendRequestRequest) returns (AcceptFriendRequestResponse);
+    rpc RejectFriendRequest (RejectFriendRequestRequest) returns (RejectFriendRequestResponse);
+}
+message RejectFriendRequestRequest {
+    FriendRequest request = 1;
+}
+message RejectFriendRequestResponse {
+    Contact contact = 1;
+}
+
+message AcceptFriendRequestRequest {
+    FriendRequest request = 1;
+}
+message AcceptFriendRequestResponse {
+    Contact contact = 1;
+}
+
+message SendFriendRequestRequest {
+    FriendRequest request = 1;
+}
+message SendFriendRequestResponse {
+    Contact contact = 1;
+}
+
+message FriendRequest {
+    string fromID  =1;
+    string toID = 2;
+    int64 createdTIme = 3;
+    map<string, string> metaData = 4;
+    bool isAccepted = 5;
+    bool isRejected = 6;
+    int64 acceptedOrRejectedAt = 7;
 }
 
 message ReportContactRequest {

@@ -17,10 +17,130 @@ service TalkService {
     rpc BlockContact (BlockContactRequest) returns (BlockContactResponse);
     rpc ReportContact (ReportContactRequest) returns (ReportContactResponse);
 
+    //Friend Requests func
     rpc SendFriendRequest (SendFriendRequestRequest) returns (SendFriendRequestResponse);
     rpc AcceptFriendRequest (AcceptFriendRequestRequest) returns (AcceptFriendRequestResponse);
     rpc RejectFriendRequest (RejectFriendRequestRequest) returns (RejectFriendRequestResponse);
+    rpc GetAllFriendIds (GetAllFriendIdsRequest) returns (GetAllFriendIdsResponse);
+    rpc GetAllFriendRequestIds (GetAllFriendRequestIdsRequest) returns (GetAllFriendRequestIdsResponse);
+    rpc GetALlFriendRequestedIds (GetALlFriendRequestedIdsRequest) returns (GetALlFriendRequestedIdsResponse);
+    rpc GetFriendRequestStatus (GetFriendRequestStatusRequest) returns (GetFriendRequestStatusResponse);
+    rpc GetAllBlockedIds (GetAllBlockedIdsRequest) returns (GetAllBlockedIdsResponse);
+
+    // Find User func
+    rpc FindUserByUserID (FindUserByUserIDRequest) returns (FindUserByUserIDResponse);
+    rpc FinduserByTicket (FinduserByTicketRequest) returns (FinduserByTicketResponse);
+    rpc FindUserByEmail (FindUserByEmailRequest) returns (FindUserByEmailResponse);
+
+    rpc UpdateProfile (UpdateProfileRequest) returns (UpdateProfileResponse);
+    rpc GetProfile (GetProfileRequest) returns (GetProfileResponse);
+
+    rpc UpdateSetting (UpdateSettingRequest) returns (UpdateSettingResponse);
+    rpc GetSetting (GetSettingRequest) returns (GetSettingResponse);
 }
+
+message GetSettingRequest {}
+message GetSettingResponse {
+    Setting setting = 1;
+}
+
+message UpdateSettingRequest {}
+message UpdateSettingResponse {
+    Setting setting = 1;
+}
+
+message Setting {
+    string privateUserID = 1;
+    bool allowSearchByPrivateUserID = 2;
+    string email = 3;
+    bool allowSearchByEmail = 4;
+    string userTicket = 5;
+    bool allowSearchByUserTicket = 6;
+}
+
+message GetProfileRequest {}
+message GetProfileResponse {
+    Profile profile = 1;
+}
+
+message UpdateProfileRequest {
+    repeated ProfileContent contents = 1;
+}
+
+message ProfileContent {
+    ProfileKey key = 1;
+    string value = 2;
+}
+enum ProfileKey {
+    NAME = 0;
+    BIO = 1;
+}
+message UpdateProfileResponse {
+    Profile profile = 1;
+}
+
+message Profile {
+    string uuid = 1;
+    string name = 2;
+    string bio = 3;
+    reserved 4, 5 to 10;
+    string iconPath = 11;
+    string coverPath = 12;
+    string twitterID = 13;
+    string instagramID = 14;
+    string githubID = 15;
+}
+
+message FindUserByEmailRequest {
+    string email = 1;
+}
+message FindUserByEmailResponse {
+    Contact contact = 1;
+}
+
+message FinduserByTicketRequest {
+    string ticket = 1;
+}
+message FinduserByTicketResponse {
+    Contact contact = 1;
+}
+
+message FindUserByUserIDRequest {
+    string userID = 1;
+}
+message FindUserByUserIDResponse {
+    Contact contact = 1;
+}
+
+
+message GetAllBlockedIdsRequest {}
+message GetAllBlockedIdsResponse {
+    repeated string uuids = 1;
+}
+
+message GetFriendRequestStatusRequest {
+    repeated string uuids = 1;
+}
+message GetFriendRequestStatusResponse {
+    repeated FriendRequest requests = 1;
+}
+
+message GetALlFriendRequestedIdsRequest {}
+message GetALlFriendRequestedIdsResponse {
+    repeated FriendRequest requests = 1;
+}
+
+message GetAllFriendRequestIdsRequest {}
+message GetAllFriendRequestIdsResponse {
+    repeated FriendRequest requests = 1;
+}
+
+message GetAllFriendIdsRequest {
+}
+message GetAllFriendIdsResponse {
+    repeated string ids = 1;
+}
+
 message RejectFriendRequestRequest {
     FriendRequest request = 1;
 }

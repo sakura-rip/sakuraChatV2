@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+option go_package = ".;TalkService";
+
 package talk;
 
 service TalkService {
@@ -41,6 +43,7 @@ message GetSettingResponse {
     Setting setting = 1;
 }
 
+
 message UpdateSettingRequest {
     repeated SettingKey keys = 1;
     Setting setting = 2;
@@ -67,13 +70,18 @@ message Setting {
     bool allowSearchByUserTicket = 6;
 }
 
+
 message GetProfileRequest {}
 message GetProfileResponse {
     Profile profile = 1;
 }
 
+
 message UpdateProfileRequest {
     repeated ProfileContent contents = 1;
+}
+message UpdateProfileResponse {
+    Profile profile = 1;
 }
 
 message ProfileContent {
@@ -84,10 +92,6 @@ message ProfileContent {
 enum ProfileKey {
     NAME = 0;
     BIO = 1;
-}
-
-message UpdateProfileResponse {
-    Profile profile = 1;
 }
 
 message Profile {
@@ -102,6 +106,7 @@ message Profile {
     string githubID = 15;
 }
 
+
 message FindUserByEmailRequest {
     string email = 1;
 }
@@ -109,12 +114,14 @@ message FindUserByEmailResponse {
     Contact contact = 1;
 }
 
+
 message FinduserByTicketRequest {
     string ticket = 1;
 }
 message FinduserByTicketResponse {
     Contact contact = 1;
 }
+
 
 message FindUserByUserIDRequest {
     string userID = 1;
@@ -129,6 +136,7 @@ message GetAllBlockedIdsResponse {
     repeated string uuids = 1;
 }
 
+
 message GetFriendRequestStatusRequest {
     repeated string uuids = 1;
 }
@@ -136,21 +144,25 @@ message GetFriendRequestStatusResponse {
     repeated FriendRequest requests = 1;
 }
 
+
 message GetALlFriendRequestedIdsRequest {}
 message GetALlFriendRequestedIdsResponse {
     repeated FriendRequest requests = 1;
 }
+
 
 message GetAllFriendRequestIdsRequest {}
 message GetAllFriendRequestIdsResponse {
     repeated FriendRequest requests = 1;
 }
 
+
 message GetAllFriendIdsRequest {
 }
 message GetAllFriendIdsResponse {
     repeated string ids = 1;
 }
+
 
 message RejectFriendRequestRequest {
     FriendRequest request = 1;
@@ -159,6 +171,7 @@ message RejectFriendRequestResponse {
     Contact contact = 1;
 }
 
+
 message AcceptFriendRequestRequest {
     FriendRequest request = 1;
 }
@@ -166,12 +179,14 @@ message AcceptFriendRequestResponse {
     Contact contact = 1;
 }
 
+
 message SendFriendRequestRequest {
     FriendRequest request = 1;
 }
 message SendFriendRequestResponse {
     Contact contact = 1;
 }
+
 
 message FriendRequest {
     string fromID  =1;
@@ -190,10 +205,12 @@ message ReportContactRequest {
 }
 message ReportContactResponse {}
 
+
 message BlockContactRequest {
     string uuid  =1;
 }
 message BlockContactResponse{}
+
 
 message UpdateContactRequest {
     Contact contact = 1;
@@ -202,22 +219,27 @@ message UpdateContactResponse {
     Contact contact = 1;
 }
 
+
 message GetContactsRequest {
     repeated string uuids = 1;
 }
 message GetContactsResponse {
     repeated Contact contacts = 1;
 }
+
+
 message ReportMessageRequest {
     int64 messageID = 1;
     string reason = 2;
 }
 message ReportMessageResponse{}
 
+
 message HideMessageRequest {
     int64 messageID = 1;
 }
 message HideMessageResponse{}
+
 
 message UnsendMessageRequest {
     string  messageID = 1;
@@ -227,18 +249,18 @@ message UnsendMessageResponse{}
 message EditMessageRequest {
     Message message = 1;
 }
-
 message EditMessageResponse {
     Message message = 1;
 }
 
+
 message SendMessageRequest {
     Message message = 1;
 }
-
 message SendMessageResponse {
     Message message = 1;
 }
+
 
 message Message {
     string text = 1;
@@ -276,10 +298,10 @@ enum ToType {
 message GetContactRequest {
     string uuid = 1;
 }
-
 message GetContactResponse {
     Contact contact = 1;
 }
+
 
 message Contact {
     string uuid = 1;

@@ -3,21 +3,19 @@ syntax = "proto3";
 package talk;
 
 service TalkService {
-    // Message Func
+
     rpc SendMessage (SendMessageRequest) returns (SendMessageResponse);
     rpc EditMessage (EditMessageRequest) returns (EditMessageResponse);
     rpc UnsendMessage (UnsendMessageRequest) returns (UnsendMessageResponse);
     rpc HideMessage (HideMessageRequest) returns (HideMessageResponse);
     rpc ReportMessage (ReportMessageRequest) returns (ReportMessageResponse);
 
-    //Contact func
     rpc GetContact (GetContactRequest) returns (GetContactResponse);
     rpc GetContacts (GetContactsRequest) returns (GetContactsResponse);
     rpc UpdateContact (UpdateContactRequest) returns (UpdateContactResponse);
     rpc BlockContact (BlockContactRequest) returns (BlockContactResponse);
     rpc ReportContact (ReportContactRequest) returns (ReportContactResponse);
 
-    //Friend Requests func
     rpc SendFriendRequest (SendFriendRequestRequest) returns (SendFriendRequestResponse);
     rpc AcceptFriendRequest (AcceptFriendRequestRequest) returns (AcceptFriendRequestResponse);
     rpc RejectFriendRequest (RejectFriendRequestRequest) returns (RejectFriendRequestResponse);
@@ -27,7 +25,6 @@ service TalkService {
     rpc GetFriendRequestStatus (GetFriendRequestStatusRequest) returns (GetFriendRequestStatusResponse);
     rpc GetAllBlockedIds (GetAllBlockedIdsRequest) returns (GetAllBlockedIdsResponse);
 
-    // Find User func
     rpc FindUserByUserID (FindUserByUserIDRequest) returns (FindUserByUserIDResponse);
     rpc FinduserByTicket (FinduserByTicketRequest) returns (FinduserByTicketResponse);
     rpc FindUserByEmail (FindUserByEmailRequest) returns (FindUserByEmailResponse);
@@ -44,9 +41,21 @@ message GetSettingResponse {
     Setting setting = 1;
 }
 
-message UpdateSettingRequest {}
+message UpdateSettingRequest {
+    repeated SettingKey keys = 1;
+    Setting setting = 2;
+}
 message UpdateSettingResponse {
     Setting setting = 1;
+}
+
+enum SettingKey {
+    PRIVATE_USER_ID = 0;
+    ALLOW_SEARCH_BY_PRIVATE_USER_ID = 1;
+    EMAIL = 2;
+    ALLOW_SEARCH_BY_EMAIL = 3;
+    USER_TICKET = 4;
+    ALLOW_SEARCH_BY_USER_TICKET = 5;
 }
 
 message Setting {
@@ -71,10 +80,12 @@ message ProfileContent {
     ProfileKey key = 1;
     string value = 2;
 }
+
 enum ProfileKey {
     NAME = 0;
     BIO = 1;
 }
+
 message UpdateProfileResponse {
     Profile profile = 1;
 }

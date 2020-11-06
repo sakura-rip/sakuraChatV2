@@ -46,6 +46,6 @@ func VerifyTokenAndGetUUID(ctx context.Context) (uuid string, ok bool) {
 	if err != nil {
 		return "", false
 	}
-	uuid, ok = jwt.Claims["chat-uuid"].(string)
+	uuid = "u" + jwt.UID
 	return
 }

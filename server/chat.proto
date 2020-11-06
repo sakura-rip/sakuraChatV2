@@ -356,3 +356,16 @@ service TalkService {
     rpc FetchEvents (FetchEventsRequest) returns (stream FetchEventsResponse);
 }
 
+
+
+
+
+
+message CreateRegisterSessionRequest {}
+message CreateRegisterSessionResponse {
+    string sessionID = 1;
+}
+
+service AuthService {
+    rpc CreateRegisterSession(CreateRegisterSessionRequest) returns (CreateRegisterSessionResponse);
+}

@@ -1,10 +1,13 @@
 syntax = "proto3";
 
-option go_package = ".;TalkRpc";
+option go_package = ".;TalkRPC";
 
 package talk;
 
 //protoc --go_out=plugins=grpc:../pb chat.proto
+
+//pip install grpcio-tools
+//python -m grpc.tools.protoc -I. --python_out=pb --grpc_python_out=pb chat.proto
 
 service TalkService {
 

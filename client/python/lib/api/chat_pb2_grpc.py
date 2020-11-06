@@ -6,12 +6,7 @@ import chat_pb2 as chat__pb2
 
 
 class TalkServiceStub(object):
-    """protoc --go_out=plugins=grpc:../pb chat.proto
-
-    pip install grpcio-tools
-    python -m grpc.tools.protoc -I. --python_out=pb --grpc_python_out=pb chat.proto
-
-    """
+    """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
         """Constructor.
@@ -152,12 +147,7 @@ class TalkServiceStub(object):
 
 
 class TalkServiceServicer(object):
-    """protoc --go_out=plugins=grpc:../pb chat.proto
-
-    pip install grpcio-tools
-    python -m grpc.tools.protoc -I. --python_out=pb --grpc_python_out=pb chat.proto
-
-    """
+    """Missing associated documentation comment in .proto file."""
 
     def SendMessage(self, request, context):
         """Missing associated documentation comment in .proto file."""
@@ -456,12 +446,7 @@ def add_TalkServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class TalkService(object):
-    """protoc --go_out=plugins=grpc:../pb chat.proto
-
-    pip install grpcio-tools
-    python -m grpc.tools.protoc -I. --python_out=pb --grpc_python_out=pb chat.proto
-
-    """
+    """Missing associated documentation comment in .proto file."""
 
     @staticmethod
     def SendMessage(request,
@@ -902,5 +887,66 @@ class TalkService(object):
         return grpc.experimental.unary_stream(request, target, '/talk.TalkService/FetchEvents',
             chat__pb2.FetchEventsRequest.SerializeToString,
             chat__pb2.FetchEventsResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+
+class AuthServiceStub(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.CreateRegisterSession = channel.unary_unary(
+                '/talk.AuthService/CreateRegisterSession',
+                request_serializer=chat__pb2.CreateRegisterSessionRequest.SerializeToString,
+                response_deserializer=chat__pb2.CreateRegisterSessionResponse.FromString,
+                )
+
+
+class AuthServiceServicer(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def CreateRegisterSession(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+
+def add_AuthServiceServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+            'CreateRegisterSession': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateRegisterSession,
+                    request_deserializer=chat__pb2.CreateRegisterSessionRequest.FromString,
+                    response_serializer=chat__pb2.CreateRegisterSessionResponse.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'talk.AuthService', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+
+
+ # This class is part of an EXPERIMENTAL API.
+class AuthService(object):
+    """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def CreateRegisterSession(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/talk.AuthService/CreateRegisterSession',
+            chat__pb2.CreateRegisterSessionRequest.SerializeToString,
+            chat__pb2.CreateRegisterSessionResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

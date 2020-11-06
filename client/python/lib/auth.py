@@ -7,4 +7,6 @@ class Auth:
 
     def create_account(self):
         sessionID = self.auth.CreateRegisterSession()
+        self.auth.setPassword(sessionID, "passwd")
+        self.auth.registerPrimary(sessionID) #return authToken
         pass

@@ -144,6 +144,11 @@ class TalkServiceStub(object):
                 request_serializer=chat__pb2.GetSettingRequest.SerializeToString,
                 response_deserializer=chat__pb2.GetSettingResponse.FromString,
                 )
+        self.FetchEvents = channel.unary_stream(
+                '/talk.TalkService/FetchEvents',
+                request_serializer=chat__pb2.FetchEventsRequest.SerializeToString,
+                response_deserializer=chat__pb2.FetchEventsResponse.FromString,
+                )
 
 
 class TalkServiceServicer(object):
@@ -304,6 +309,12 @@ class TalkServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def FetchEvents(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_TalkServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -431,6 +442,11 @@ def add_TalkServiceServicer_to_server(servicer, server):
                     servicer.GetSetting,
                     request_deserializer=chat__pb2.GetSettingRequest.FromString,
                     response_serializer=chat__pb2.GetSettingResponse.SerializeToString,
+            ),
+            'FetchEvents': grpc.unary_stream_rpc_method_handler(
+                    servicer.FetchEvents,
+                    request_deserializer=chat__pb2.FetchEventsRequest.FromString,
+                    response_serializer=chat__pb2.FetchEventsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -869,5 +885,22 @@ class TalkService(object):
         return grpc.experimental.unary_unary(request, target, '/talk.TalkService/GetSetting',
             chat__pb2.GetSettingRequest.SerializeToString,
             chat__pb2.GetSettingResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def FetchEvents(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/talk.TalkService/FetchEvents',
+            chat__pb2.FetchEventsRequest.SerializeToString,
+            chat__pb2.FetchEventsResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

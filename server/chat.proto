@@ -1,8 +1,10 @@
 syntax = "proto3";
 
-option go_package = ".;TalkService";
+option go_package = ".;TalkRpc";
 
 package talk;
+
+//protoc --go_out=plugins=grpc:../pb chat.proto
 
 service TalkService {
 
@@ -28,7 +30,7 @@ service TalkService {
     rpc GetAllBlockedIds (GetAllBlockedIdsRequest) returns (GetAllBlockedIdsResponse);
 
     rpc FindUserByUserID (FindUserByUserIDRequest) returns (FindUserByUserIDResponse);
-    rpc FinduserByTicket (FinduserByTicketRequest) returns (FinduserByTicketResponse);
+    rpc FindUserByTicket (FindUserByTicketRequest) returns (FindUserByTicketResponse);
     rpc FindUserByEmail (FindUserByEmailRequest) returns (FindUserByEmailResponse);
 
     rpc UpdateProfile (UpdateProfileRequest) returns (UpdateProfileResponse);
@@ -115,10 +117,10 @@ message FindUserByEmailResponse {
 }
 
 
-message FinduserByTicketRequest {
+message FindUserByTicketRequest {
     string ticket = 1;
 }
-message FinduserByTicketResponse {
+message FindUserByTicketResponse {
     Contact contact = 1;
 }
 

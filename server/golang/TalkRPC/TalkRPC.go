@@ -4,7 +4,7 @@
 // 	protoc        v3.13.0
 // source: chat.proto
 
-package TalkService
+package TalkRPC
 
 import (
 	context "context"
@@ -4861,7 +4861,7 @@ func (c *talkServiceClient) GetSetting(ctx context.Context, in *GetSettingReques
 	return out, nil
 }
 
-// TalkServiceServer is the server API for TalkService service.
+// TalkServiceServer is the service API for TalkService service.
 type TalkServiceServer interface {
 	SendMessage(context.Context, *SendMessageRequest) (*SendMessageResponse, error)
 	EditMessage(context.Context, *EditMessageRequest) (*EditMessageResponse, error)

@@ -41,6 +41,26 @@ service TalkService {
 
     rpc UpdateSetting (UpdateSettingRequest) returns (UpdateSettingResponse);
     rpc GetSetting (GetSettingRequest) returns (GetSettingResponse);
+
+    rpc FetchEvents (FetchEventsRequest) returns (stream FetchEventsResponse);
+}
+
+message FetchEventsRequest {
+    int64 index = 1;
+}
+message FetchEventsResponse {
+    repeated Event events = 1;
+    EventType eventType = 2;
+}
+
+enum EventType {
+    RECEIVE_MESSAGE = 0;
+    SEND_MESSAGE = 1;
+}
+
+message Event {
+    int64 index =1;
+    Message message = 2;
 }
 
 message GetSettingRequest {}

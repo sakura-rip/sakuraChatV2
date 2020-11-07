@@ -2,12 +2,13 @@ package service
 
 import (
 	"context"
+	"fmt"
+	"os"
+
 	firebase "firebase.google.com/go"
 	firebaseAuth "firebase.google.com/go/auth"
-	"fmt"
 	"google.golang.org/api/option"
 	"google.golang.org/grpc/metadata"
-	"os"
 )
 
 var auth *firebaseAuth.Client
@@ -46,6 +47,6 @@ func VerifyTokenAndGetUUID(ctx context.Context) (uuid string, ok bool) {
 	if err != nil {
 		return "", false
 	}
-	uuid = "u" + jwt.UID
+	uuid = jwt.UID
 	return
 }

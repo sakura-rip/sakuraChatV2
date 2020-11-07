@@ -4,7 +4,13 @@ import json
 
 from .api.chat_pb2_grpc import AuthServiceStub
 from .api.chat_pb2 import (
-    VerifyIDTokenRequest
+    VerifyIDTokenRequest,
+    GetProfileRequest,
+    GetSettingRequest,
+    GetAllFriendIdsRequest,
+    GetAllFriendRequestIdsRequest,
+    GetALlFriendRequestedIdsRequest,
+    GetAllBlockedIdsRequest
 )
 from .config import Config
 
@@ -19,9 +25,16 @@ class Auth:
         # SetHeader
         ok = self.auth.VerifyIDToken(VerifyIDTokenRequest(firebase_user["idToken"]))
         if ok:
-            self.profile = self.talk.GetProfile()
-            self.setting = self.talk.GetSetting()
-            self.talk,
+            self.init_account()
+
+
+    def init_account(self):
+        self.profile = self.talk.GetProfile(GetProfileRequest())
+        self.setting = self.talk.GetSetting(GetSettingRequest())
+        self.friends = self.talk.GetAllFriendIds(GetAllFriendIdsRequest())
+        self.friend_requests = self.talk.GetAllFriendRequestIds(GetAllFriendRequestIdsRequest())
+        self.firned_requesteds = self.talk.GetALlFriendRequestedIds(GetALlFriendRequestedIdsRequest())
+        self.blocked = self.talk.GetAllBlockedIds(GetAllBlockedIdsRequest())
 
     def signUpWithEmailAndPasswd(self, email: str, password: str):
         uri = f"https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key={Config.Firebase_api_key}"

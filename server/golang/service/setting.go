@@ -6,9 +6,9 @@ import (
 	"google.golang.org/grpc"
 )
 
-func (cl *ChatHandler) UpdateSetting(ctx context.Context, in *TalkRPC.UpdateSettingRequest, opts ...grpc.CallOption) (*TalkRPC.UpdateSettingResponse, error) {
+func (cl *TalkHandler) UpdateSetting(ctx context.Context, in *TalkRPC.UpdateSettingRequest, opts ...grpc.CallOption) (*TalkRPC.UpdateSettingResponse, error) {
 
 }
-func (cl *ChatHandler) GetSetting(ctx context.Context, in *TalkRPC.GetSettingRequest, opts ...grpc.CallOption) (*TalkRPC.GetSettingResponse, error) {
+func (cl *TalkHandler) GetSetting(ctx context.Context, in *TalkRPC.GetSettingRequest, opts ...grpc.CallOption) (*TalkRPC.GetSettingResponse, error) {
 
 }

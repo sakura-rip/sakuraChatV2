@@ -358,11 +358,13 @@ service TalkService {
 
 
 
-message CreateRegisterSessionRequest {}
-message CreateRegisterSessionResponse {
-    string sessionID = 1;
+message VerifyIDTokenRequest {
+    string jwtToken = 1;
+}
+message VerifyIDTokenResponse {
+    string jwtToken = 1;
 }
 
 service AuthService {
-    rpc CreateRegisterSession(CreateRegisterSessionRequest) returns (CreateRegisterSessionResponse);
+    rpc VerifyIDToken (VerifyIDTokenRequest) returns (VerifyIDTokenResponse);
 }

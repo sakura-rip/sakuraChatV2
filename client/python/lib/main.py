@@ -1,4 +1,3 @@
-from client.python.lib.auth import Auth
 import grpc
 from .config import Config
 from .talk import Talk

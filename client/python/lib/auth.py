@@ -1,8 +1,7 @@
-
-import requests
 import json
 
-from .api.chat_pb2_grpc import AuthServiceStub
+import requests
+
 from .api.chat_pb2 import (
     VerifyIDTokenRequest,
     GetProfileRequest,

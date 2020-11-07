@@ -11,6 +11,7 @@ from .api.chat_pb2 import (
     GetALlFriendRequestedIdsRequest,
     GetAllBlockedIdsRequest
 )
+from .api.chat_pb2_grpc import AuthServiceStub, TalkServiceStub
 from .config import Config
 
 

@@ -69,16 +69,13 @@ message GetProfileResponse {
 
 
 message UpdateProfileRequest {
-    repeated ProfileContent contents = 1;
+    repeated ProfileKey keys = 1;
+    Profile profile = 2;
 }
 message UpdateProfileResponse {
     Profile profile = 1;
 }
 
-message ProfileContent {
-    ProfileKey key = 1;
-    string value = 2;
-}
 
 enum ProfileKey {
     NAME = 0;

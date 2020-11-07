@@ -8,3 +8,4 @@ ini.read(f_path, encoding="utf-8")
 
 class Config:
     HOST_URL = ini["URLS"]["HOST_DOMAIN"]
+    Firebase_api_key = ini["KEYS"]["FIREBASE_AUTH"]

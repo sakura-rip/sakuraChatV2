@@ -27,7 +27,6 @@ class Auth:
         if ok:
             self.init_account()
 
-
     def init_account(self):
         self.profile = self.talk.GetProfile(GetProfileRequest())
         self.setting = self.talk.GetSetting(GetSettingRequest())

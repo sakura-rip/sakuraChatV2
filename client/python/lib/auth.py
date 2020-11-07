@@ -14,7 +14,7 @@ class Auth:
         self.auth = AuthServiceStub(self.channel)
 
     def create_account(self):
-        # FIrebase sdk func
+        # Firebase sdk func
         firebase_user = self.signUpWithEmailAndPasswd(email=input(), password=input())
         # SetHeader
         ok = self.auth.VerifyIDToken(VerifyIDTokenRequest(firebase_user["idToken"]))

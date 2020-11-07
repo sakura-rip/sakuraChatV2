@@ -900,17 +900,17 @@ class AuthServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.CreateRegisterSession = channel.unary_unary(
-                '/talk.AuthService/CreateRegisterSession',
-                request_serializer=chat__pb2.CreateRegisterSessionRequest.SerializeToString,
-                response_deserializer=chat__pb2.CreateRegisterSessionResponse.FromString,
+        self.VerifyIDToken = channel.unary_unary(
+                '/talk.AuthService/VerifyIDToken',
+                request_serializer=chat__pb2.VerifyIDTokenRequest.SerializeToString,
+                response_deserializer=chat__pb2.VerifyIDTokenResponse.FromString,
                 )
 
 
 class AuthServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def CreateRegisterSession(self, request, context):
+    def VerifyIDToken(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -919,10 +919,10 @@ class AuthServiceServicer(object):
 
 def add_AuthServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'CreateRegisterSession': grpc.unary_unary_rpc_method_handler(
-                    servicer.CreateRegisterSession,
-                    request_deserializer=chat__pb2.CreateRegisterSessionRequest.FromString,
-                    response_serializer=chat__pb2.CreateRegisterSessionResponse.SerializeToString,
+            'VerifyIDToken': grpc.unary_unary_rpc_method_handler(
+                    servicer.VerifyIDToken,
+                    request_deserializer=chat__pb2.VerifyIDTokenRequest.FromString,
+                    response_serializer=chat__pb2.VerifyIDTokenResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -935,7 +935,7 @@ class AuthService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def CreateRegisterSession(request,
+    def VerifyIDToken(request,
             target,
             options=(),
             channel_credentials=None,
@@ -945,8 +945,8 @@ class AuthService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/talk.AuthService/CreateRegisterSession',
-            chat__pb2.CreateRegisterSessionRequest.SerializeToString,
-            chat__pb2.CreateRegisterSessionResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/talk.AuthService/VerifyIDToken',
+            chat__pb2.VerifyIDTokenRequest.SerializeToString,
+            chat__pb2.VerifyIDTokenResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -361,9 +361,7 @@ service TalkService {
 message VerifyIDTokenRequest {
     string jwtToken = 1;
 }
-message VerifyIDTokenResponse {
-    string jwtToken = 1;
-}
+message VerifyIDTokenResponse {}
 
 service AuthService {
     rpc VerifyIDToken (VerifyIDTokenRequest) returns (VerifyIDTokenResponse);

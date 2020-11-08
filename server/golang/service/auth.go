@@ -24,7 +24,5 @@ func (cl *AuthHandler) VerifyIDToken(ctx context.Context, in *TalkRPC.VerifyIDTo
 	}
 	//クライアントのヘッダーを追加
 	_ = grpc.SetHeader(ctx, metadata.Pairs("x-chat-token", token))
-	return &TalkRPC.VerifyIDTokenResponse{
-		JwtToken: token,
-	}, nil
+	return &TalkRPC.VerifyIDTokenResponse{}, nil
 }

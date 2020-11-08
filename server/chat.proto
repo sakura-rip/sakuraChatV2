@@ -363,10 +363,10 @@ message VerifyIDTokenRequest {
 }
 message VerifyIDTokenResponse {}
 
-message RegisterPrimaryAccountRequest {}
-message RegisterPrimaryAccountResponse {}
+message InitPrimaryAccountRequest {}
+message InitPrimaryAccountResponse {}
 
 service AuthService {
     rpc VerifyIDToken (VerifyIDTokenRequest) returns (VerifyIDTokenResponse);
-    rpc RegisterPrimaryAccount (RegisterPrimaryAccountRequest) returns (RegisterPrimaryAccountResponse);
+    rpc InitPrimaryAccount (InitPrimaryAccountRequest) returns (InitPrimaryAccountResponse);
 }

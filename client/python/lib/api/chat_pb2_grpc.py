@@ -905,10 +905,10 @@ class AuthServiceStub(object):
                 request_serializer=chat__pb2.VerifyIDTokenRequest.SerializeToString,
                 response_deserializer=chat__pb2.VerifyIDTokenResponse.FromString,
                 )
-        self.RegisterPrimaryAccount = channel.unary_unary(
-                '/talk.AuthService/RegisterPrimaryAccount',
-                request_serializer=chat__pb2.RegisterPrimaryAccountRequest.SerializeToString,
-                response_deserializer=chat__pb2.RegisterPrimaryAccountResponse.FromString,
+        self.InitPrimaryAccount = channel.unary_unary(
+                '/talk.AuthService/InitPrimaryAccount',
+                request_serializer=chat__pb2.InitPrimaryAccountRequest.SerializeToString,
+                response_deserializer=chat__pb2.InitPrimaryAccountResponse.FromString,
                 )
 
 
@@ -921,7 +921,7 @@ class AuthServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def RegisterPrimaryAccount(self, request, context):
+    def InitPrimaryAccount(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -935,10 +935,10 @@ def add_AuthServiceServicer_to_server(servicer, server):
                     request_deserializer=chat__pb2.VerifyIDTokenRequest.FromString,
                     response_serializer=chat__pb2.VerifyIDTokenResponse.SerializeToString,
             ),
-            'RegisterPrimaryAccount': grpc.unary_unary_rpc_method_handler(
-                    servicer.RegisterPrimaryAccount,
-                    request_deserializer=chat__pb2.RegisterPrimaryAccountRequest.FromString,
-                    response_serializer=chat__pb2.RegisterPrimaryAccountResponse.SerializeToString,
+            'InitPrimaryAccount': grpc.unary_unary_rpc_method_handler(
+                    servicer.InitPrimaryAccount,
+                    request_deserializer=chat__pb2.InitPrimaryAccountRequest.FromString,
+                    response_serializer=chat__pb2.InitPrimaryAccountResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -968,7 +968,7 @@ class AuthService(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def RegisterPrimaryAccount(request,
+    def InitPrimaryAccount(request,
             target,
             options=(),
             channel_credentials=None,
@@ -978,8 +978,8 @@ class AuthService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/talk.AuthService/RegisterPrimaryAccount',
-            chat__pb2.RegisterPrimaryAccountRequest.SerializeToString,
-            chat__pb2.RegisterPrimaryAccountResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/talk.AuthService/InitPrimaryAccount',
+            chat__pb2.InitPrimaryAccountRequest.SerializeToString,
+            chat__pb2.InitPrimaryAccountResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

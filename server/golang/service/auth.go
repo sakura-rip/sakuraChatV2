@@ -26,3 +26,7 @@ func (cl *AuthHandler) VerifyIDToken(ctx context.Context, in *TalkRPC.VerifyIDTo
 	_ = grpc.SetHeader(ctx, metadata.Pairs("x-chat-token", token))
 	return &TalkRPC.VerifyIDTokenResponse{}, nil
 }
+
+func (cl *AuthHandler) RegisterPrimaryAccount(ctx context.Context, in *TalkRPC.RegisterPrimaryAccountRequest, opts ...grpc.CallOption) (*TalkRPC.RegisterPrimaryAccountResponse, error) {
+
+}

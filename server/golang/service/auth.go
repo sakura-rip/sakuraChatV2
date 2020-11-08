@@ -28,5 +28,9 @@ func (cl *AuthHandler) VerifyIDToken(ctx context.Context, in *TalkRPC.VerifyIDTo
 }
 
 func (cl *AuthHandler) InitPrimaryAccount(ctx context.Context, in *TalkRPC.InitPrimaryAccountRequest, opts ...grpc.CallOption) (*TalkRPC.InitPrimaryAccountResponse, error) {
-
+	uuid, ok := VerifyTokenAndGetUUID(ctx)
+	if ok == false {
+		return &TalkRPC.InitPrimaryAccountResponse{}, status.New(codes.Unauthenticated, "").Err()
+	}
+	//	TODO: DB操作
 }

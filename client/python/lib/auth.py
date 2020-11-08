@@ -19,13 +19,17 @@ class Auth:
     def __init__(self):
         self.auth = AuthServiceStub(self.channel)
 
+    def save_refresh_token(self, token: str):
+        with open("refresh", "w") as f:
+            f.write(token)
+
     def create_account(self):
         # Firebase sdk func
         firebase_user = self.signUpWithEmailAndPasswd(email=input(), password=input())
+        self.save_refresh_token(firebase_user["refreshToken"])
         # SetHeader
-        ok = self.auth.VerifyIDToken(VerifyIDTokenRequest(firebase_user["idToken"]))
-        if ok:
-            self.init_account()
+        self.auth.VerifyIDToken(VerifyIDTokenRequest(firebase_user["idToken"]))
+        self.init_account()
 
     def init_account(self):
         self.profile = self.talk.GetProfile(GetProfileRequest())

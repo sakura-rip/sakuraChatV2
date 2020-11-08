@@ -12,10 +12,11 @@ import (
 )
 
 var auth *firebaseAuth.Client
+var ctx context.Context
 
 // init firebase authentication
 func init() {
-	ctx := context.Background()
+	ctx = context.Background()
 	opt := option.WithCredentialsFile(os.Getenv("FIREBASE_SECRET"))
 	app, err := firebase.NewApp(ctx, nil, opt)
 	if err != nil {

@@ -48,7 +48,7 @@ func VerifyTokenAndGetUUID(ctx context.Context) (uuid string, ok bool, claims ma
 	if err != nil {
 		return "", false, nil
 	}
-	if value, ok := jwt.Claims["initialized"]; value == true && ok == true {
+	if value, ok := jwt.Claims["registered"]; value == true && ok == true {
 		return jwt.UID, false, jwt.Claims
 	}
 	return jwt.UID, ok, jwt.Claims

@@ -15,7 +15,7 @@ func (cl *AuthHandler) VerifyIDToken(ctx context.Context, in *TalkRPC.VerifyIDTo
 		return &TalkRPC.VerifyIDTokenResponse{}, status.New(codes.InvalidArgument, "bad token").Err()
 	}
 	claims := map[string]interface{}{
-		"initialized": false,
+		"registered": false,
 	}
 	//premiumカラムをつけてToken 再発行
 	token, err := auth.CustomTokenWithClaims(ctx, jwt.UID, claims)
@@ -36,13 +36,7 @@ func (cl *AuthHandler) InitPrimaryAccount(ctx context.Context, in *TalkRPC.InitP
 	if err != nil {
 		return &TalkRPC.InitPrimaryAccountResponse{}, status.New(codes.Unauthenticated, "").Err()
 	}
-
-	value, err := auth.GetUser(ctx, jwt.UID)
-	//User が存在しないまたはエラーがある
-	if value == nil || err != nil {
-		return &TalkRPC.InitPrimaryAccountResponse{}, status.New(codes.Internal, "").Err()
-	}
-	isInit, ok := value.CustomClaims["initialized"]
+	isInit, ok := jwt.Claims["registered"]
 	//認証されていないかつカラムが存在する
 	if isInit == false && ok == true {
 		//User情報をDBに挿入

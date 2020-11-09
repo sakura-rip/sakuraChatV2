@@ -12,14 +12,13 @@ type DBClient struct {
 	Session *mongo.Client
 }
 
-var Database *DBClient
-
-func init() {
+//ConnectToMongoDB connect to mongo
+func ConnectToMongoDB() *mongo.Client {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 	db, err := mongo.Connect(ctx, options.Client().ApplyURI("mangodb://localhost:27017"))
 	if err != nil {
 		panic(fmt.Errorf("error on init mongo db: %v", err))
 	}
-	Database = &DBClient{Session: db}
+	return db
 }

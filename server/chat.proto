@@ -361,10 +361,12 @@ service TalkService {
 message VerifyIDTokenRequest {
     string jwtToken = 1;
 }
-message VerifyIDTokenResponse {
-    string jwtToken = 1;
-}
+message VerifyIDTokenResponse {}
+
+message InitPrimaryAccountRequest {}
+message InitPrimaryAccountResponse {}
 
 service AuthService {
     rpc VerifyIDToken (VerifyIDTokenRequest) returns (VerifyIDTokenResponse);
+    rpc InitPrimaryAccount (InitPrimaryAccountRequest) returns (InitPrimaryAccountResponse);
 }

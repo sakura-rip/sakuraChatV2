@@ -34,11 +34,11 @@ type Setting struct {
 }
 
 type FriendRequest struct {
-	FromID               string
-	ToID                 string
-	CreatedTime          int64
-	Metadata             string
-	IsAccepted           bool
-	IsRejected           bool
-	AcceptedOrRejectedAt int64
+	FromID               string `bson:"omitempty"`
+	ToID                 string `bson:"omitempty"`
+	CreatedTime          int64  `bson:"omitempty"`
+	Metadata             string `bson:"omitempty"`
+	IsAccepted           bool   `bson:"omitempty"`
+	IsRejected           bool   `bson:"omitempty"`
+	AcceptedOrRejectedAt int64  `bson:"omitempty"`
 }

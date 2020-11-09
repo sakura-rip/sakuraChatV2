@@ -15,7 +15,7 @@ func (cl *AuthHandler) VerifyIDToken(ctx context.Context, in *TalkRPC.VerifyIDTo
 		return &TalkRPC.VerifyIDTokenResponse{}, status.New(codes.InvalidArgument, "bad token").Err()
 	}
 	claims := map[string]interface{}{
-		"premium": false,
+		"initialized": false,
 	}
 	//premiumカラムをつけてToken 再発行
 	token, err := auth.CustomTokenWithClaims(ctx, jwt.UID, claims)

@@ -180,7 +180,7 @@ message FriendRequest {
     string fromID  =1;
     string toID = 2;
     int64 createdTIme = 3;
-    map<string, string> metaData = 4;
+    string metaData = 4;
     bool isAccepted = 5;
     bool isRejected = 6;
     int64 acceptedOrRejectedAt = 7;
@@ -189,7 +189,7 @@ message FriendRequest {
 message ReportContactRequest {
     string uuid = 1;
     string reason = 2;
-    map<string, string> metaData = 3;
+    string metaData = 3;
 }
 message ReportContactResponse {}
 
@@ -295,7 +295,7 @@ message Contact {
     string uuid = 1;
     string name = 2;
     string overWrittenName = 3;
-    map<string, string> metaData = 4;
+    string metaData = 4;
     FriendStatus status = 5;
     reserved 6, 7;
     repeated Tag tags = 8;

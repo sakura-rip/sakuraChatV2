@@ -56,6 +56,16 @@ func (cl *AuthHandler) InitPrimaryAccount(ctx context.Context, in *TalkRPC.InitP
 		if err != nil {
 			return &TalkRPC.InitPrimaryAccountResponse{}, status.New(codes.Internal, "").Err()
 		}
+		claims := map[string]interface{}{
+			"registered": false,
+		}
+		//premiumカラムをつけてToken 再発行
+		token, err := auth.CustomTokenWithClaims(ctx, jwt.UID, claims)
+		if err != nil {
+			return &TalkRPC.InitPrimaryAccountResponse{}, status.New(codes.Internal, "internal error").Err()
+		}
+		//クライアントのヘッダーを追加
+		_ = grpc.SetHeader(ctx, metadata.Pairs("x-chat-token", token))
 		return &TalkRPC.InitPrimaryAccountResponse{}, nil
 	}
 	return &TalkRPC.InitPrimaryAccountResponse{}, status.New(codes.PermissionDenied, "").Err()

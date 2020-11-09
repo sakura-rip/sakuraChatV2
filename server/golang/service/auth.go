@@ -3,6 +3,7 @@ package service
 import (
 	"context"
 	"github.com/ch31212y/sakuraChatV2/TalkRPC"
+	"github.com/ch31212y/sakuraChatV2/database"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"

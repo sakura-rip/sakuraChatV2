@@ -1,9 +1,19 @@
 package service
 
 import (
-	"context"
-	TalkRPC "github.com/ch31212y/sakuraChatV2/TalkRPC"
-	"google.golang.org/grpc"
+	"github.com/ch31212y/sakuraChatV2/database"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
-type ChatHandler struct{}
+type TalkHandler struct{}
+
+type AuthHandler struct{}
+
+var db *database.DBClient
+
+var userDB *mongo.Collection
+
+func init() {
+	db.Session = database.ConnectToMongoDB()
+	userDB = db.Session.Database("sakuraChat").Collection("users")
+}

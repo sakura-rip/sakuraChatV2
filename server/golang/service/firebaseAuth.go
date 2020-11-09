@@ -39,15 +39,17 @@ func getHeader(ctx context.Context, key string) (token string, ok bool) {
 }
 
 //VerifyTokenAndGetUUID check token and get token's user id
-func VerifyTokenAndGetUUID(ctx context.Context) (uuid string, ok bool) {
+func VerifyTokenAndGetUUID(ctx context.Context) (uuid string, ok bool, claims map[string]interface{}) {
 	token, ok := getHeader(ctx, "X-Chat-Access")
 	if !ok {
-		return "", false
+		return "", false, nil
 	}
 	jwt, err := auth.VerifyIDToken(context.Background(), token)
 	if err != nil {
-		return "", false
+		return "", false, nil
 	}
-	uuid = jwt.UID
-	return
+	if value, ok := jwt.Claims["initialized"]; value == true && ok == true {
+		return jwt.UID, false, jwt.Claims
+	}
+	return jwt.UID, ok, jwt.Claims
 }

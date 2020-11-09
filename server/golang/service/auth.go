@@ -42,8 +42,10 @@ func (cl *AuthHandler) InitPrimaryAccount(ctx context.Context, in *TalkRPC.InitP
 	if isInit == false && ok == true {
 		//User情報をDBに挿入
 		docu := database.User{
-			ID:              jwt.UID,
-			Profile:         database.Profile{},
+			ID: jwt.UID,
+			Profile: database.Profile{
+				Name: "Kimura Sakura",
+			},
 			Setting:         database.Setting{},
 			JoinedGroupIds:  []string{},
 			InvitedGroupIds: []string{},

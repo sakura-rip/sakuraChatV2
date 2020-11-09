@@ -28,9 +28,40 @@ func (cl *AuthHandler) VerifyIDToken(ctx context.Context, in *TalkRPC.VerifyIDTo
 }
 
 func (cl *AuthHandler) InitPrimaryAccount(ctx context.Context, in *TalkRPC.InitPrimaryAccountRequest, opts ...grpc.CallOption) (*TalkRPC.InitPrimaryAccountResponse, error) {
-	uuid, ok := VerifyTokenAndGetUUID(ctx)
+	token, ok := getHeader(ctx, "X-Chat-Access")
 	if ok == false {
 		return &TalkRPC.InitPrimaryAccountResponse{}, status.New(codes.Unauthenticated, "").Err()
 	}
-	//	TODO: DB操作
+	jwt, err := auth.VerifyIDToken(context.Background(), token)
+	if err != nil {
+		return &TalkRPC.InitPrimaryAccountResponse{}, status.New(codes.Unauthenticated, "").Err()
+	}
+
+	value, err := auth.GetUser(ctx, jwt.UID)
+	//User が存在しないまたはエラーがある
+	if value == nil || err != nil {
+		return &TalkRPC.InitPrimaryAccountResponse{}, status.New(codes.Internal, "").Err()
+	}
+	isInit, ok := value.CustomClaims["initialized"]
+	//認証されていないかつカラムが存在する
+	if isInit == false && ok == true {
+		//User情報をDBに挿入
+		docu := database.User{
+			ID:              jwt.UID,
+			Profile:         database.Profile{},
+			Setting:         database.Setting{},
+			JoinedGroupIds:  []string{},
+			InvitedGroupIds: []string{},
+			FriendRequests:  []database.FriendRequest{},
+			FriendIds:       []string{},
+			BlockedIds:      []string{},
+			DeletedIds:      []string{},
+		}
+		_, err := userDB.InsertOne(ctx, docu)
+		if err != nil {
+			return &TalkRPC.InitPrimaryAccountResponse{}, status.New(codes.Internal, "").Err()
+		}
+		return &TalkRPC.InitPrimaryAccountResponse{}, nil
+	}
+	return &TalkRPC.InitPrimaryAccountResponse{}, status.New(codes.PermissionDenied, "").Err()
 }

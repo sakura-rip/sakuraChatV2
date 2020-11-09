@@ -9,7 +9,8 @@ from .api.chat_pb2 import (
     GetAllFriendIdsRequest,
     GetAllFriendRequestIdsRequest,
     GetALlFriendRequestedIdsRequest,
-    GetAllBlockedIdsRequest
+    GetAllBlockedIdsRequest,
+    InitPrimaryAccountRequest
 )
 from .api.chat_pb2_grpc import AuthServiceStub, TalkServiceStub
 from .config import Config
@@ -29,6 +30,7 @@ class Auth:
         self.save_refresh_token(firebase_user["refreshToken"])
         # SetHeader
         self.auth.VerifyIDToken(VerifyIDTokenRequest(firebase_user["idToken"]))
+        self.auth.InitPrimaryAccount(InitPrimaryAccountRequest())
         self.init_account()
 
     def init_account(self):

@@ -1,4 +1,4 @@
-package service
+package database
 
 import (
 	"context"
@@ -12,7 +12,7 @@ type DBClient struct {
 	Session *mongo.Client
 }
 
-var database *DBClient
+var Database *DBClient
 
 func init() {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
@@ -21,5 +21,5 @@ func init() {
 	if err != nil {
 		panic(fmt.Errorf("error on init mongo db: %v", err))
 	}
-	database = &DBClient{Session: db}
+	Database = &DBClient{Session: db}
 }

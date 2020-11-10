@@ -20,11 +20,10 @@ func (cl *TalkHandler) GetProfile(ctx context.Context, _ *TalkRPC.GetProfileRequ
 	}
 	//FIXME: ref: https://docs.mongodb.com/manual/tutorial/project-fields-from-query-results/#return-the-specified-fields-and-the-id-field-only
 
-
-	var DBuser database.User
 	user, err := findUserFromDB(uuid, bson.D{{"profile", 0}})
-
-
+	if err != nil {
+		return nil, err
+	}
 	profile := &TalkRPC.GetProfileResponse{
 		Profile: &TalkRPC.Profile{
 			Uuid:        uuid,

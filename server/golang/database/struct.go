@@ -6,17 +6,17 @@ type User struct {
 	Profile Profile `bson:"profile"`
 	Setting Setting `bson:"setting"`
 
-	JoinedGroupIds  []string `bson:"JoinedGroupIds"`
-	InvitedGroupIds []string `bson:"InvitedGroupIds"`
+	JoinedGroupIds  []string        `bson:"JoinedGroupIds"`
+	InvitedGroupIds []string        `bson:"InvitedGroupIds"`
 	FriendRequests  []FriendRequest `bson:"FriendRequests"`
-	FriendIds       []string `bson:"FriendIds"`
-	BlockedIds      []string `bson:"BlockedIds"`
-	DeletedIds      []string `bson:"DeletedIds"`
+	FriendIds       []string        `bson:"FriendIds"`
+	BlockedIds      []string        `bson:"BlockedIds"`
+	DeletedIds      []string        `bson:"DeletedIds"`
 }
 
 type Profile struct {
-	Name        string
-	Bio         string `bson:"omitempty"`
+	Name        string `bson:"name"`
+	Bio         string `bson:"bio"`
 	IconPath    string `bson:"omitempty"`
 	CoverPath   string `bson:"omitempty"`
 	TwitterID   string `bson:"omitempty"`

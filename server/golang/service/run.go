@@ -28,6 +28,8 @@ func runServer() {
 	}
 	server := grpc.NewServer()
 	talkService := TalkHandler{}
+	authService := AuthHandler{}
 	TalkRPC.RegisterTalkServiceServer(server, talkService)
+	TalkRPC.RegisterAuthServiceServer(server, authService)
 	server.Serve(listen)
 }

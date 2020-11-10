@@ -35,6 +35,7 @@ func (cl *TalkHandler) UpdateProfile(ctx context.Context, in *TalkRPC.UpdateProf
 	}
 	return &TalkRPC.UpdateProfileResponse{}, nil
 }
+
 func (cl *TalkHandler) GetProfile(ctx context.Context, _ *TalkRPC.GetProfileRequest, _ ...grpc.CallOption) (*TalkRPC.GetProfileResponse, error) {
 	uuid, ok, _ := VerifyTokenAndGetUUID(ctx)
 	if ok == false {

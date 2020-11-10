@@ -3,15 +3,15 @@ package database
 type User struct {
 	ID string `bson:"_id"`
 
-	Profile Profile
-	Setting Setting
+	Profile Profile `bson:"profile"`
+	Setting Setting `bson:"setting"`
 
-	JoinedGroupIds  []string
-	InvitedGroupIds []string
-	FriendRequests  []FriendRequest
-	FriendIds       []string
-	BlockedIds      []string
-	DeletedIds      []string
+	JoinedGroupIds  []string `bson:"JoinedGroupIds"`
+	InvitedGroupIds []string `bson:"InvitedGroupIds"`
+	FriendRequests  []FriendRequest `bson:"FriendRequests"`
+	FriendIds       []string `bson:"FriendIds"`
+	BlockedIds      []string `bson:"BlockedIds"`
+	DeletedIds      []string `bson:"DeletedIds"`
 }
 
 type Profile struct {

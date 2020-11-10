@@ -3,7 +3,6 @@ package service
 import (
 	"context"
 	"github.com/ch31212y/sakuraChatV2/TalkRPC"
-	"google.golang.org/grpc"
 )
 
 func (cl TalkHandler) SendFriendRequest(ctx context.Context, in *TalkRPC.SendFriendRequestRequest) (*TalkRPC.SendFriendRequestResponse, error) {

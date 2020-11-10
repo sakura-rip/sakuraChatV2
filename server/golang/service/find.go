@@ -4,7 +4,6 @@ import (
 	"context"
 
 	"github.com/ch31212y/sakuraChatV2/TalkRPC"
-	"google.golang.org/grpc"
 )
 
 func (cl TalkHandler) FindUserByUserID(ctx context.Context, in *TalkRPC.FindUserByUserIDRequest) (*TalkRPC.FindUserByUserIDResponse, error) {

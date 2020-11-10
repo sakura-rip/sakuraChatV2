@@ -73,7 +73,6 @@ message UpdateProfileRequest {
     Profile profile = 2;
 }
 message UpdateProfileResponse {
-    Profile profile = 1;
 }
 
 

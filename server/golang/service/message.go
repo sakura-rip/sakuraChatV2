@@ -6,18 +6,18 @@ import (
 	"google.golang.org/grpc"
 )
 
-func (cl *TalkHandler) SendMessage(ctx context.Context, in *TalkRPC.SendMessageRequest, opts ...grpc.CallOption) (*TalkRPC.SendMessageResponse, error) {
+func (cl TalkHandler) SendMessage(ctx context.Context, in *TalkRPC.SendMessageRequest) (*TalkRPC.SendMessageResponse, error) {
 
 }
-func (cl *TalkHandler) EditMessage(ctx context.Context, in *TalkRPC.EditMessageRequest, opts ...grpc.CallOption) (*TalkRPC.EditMessageResponse, error) {
+func (cl TalkHandler) EditMessage(ctx context.Context, in *TalkRPC.EditMessageRequest) (*TalkRPC.EditMessageResponse, error) {
 
 }
-func (cl *TalkHandler) UnsendMessage(ctx context.Context, in *TalkRPC.UnsendMessageRequest, opts ...grpc.CallOption) (*TalkRPC.UnsendMessageResponse, error) {
+func (cl TalkHandler) UnsendMessage(ctx context.Context, in *TalkRPC.UnsendMessageRequest) (*TalkRPC.UnsendMessageResponse, error) {
 
 }
-func (cl *TalkHandler) HideMessage(ctx context.Context, in *TalkRPC.HideMessageRequest, opts ...grpc.CallOption) (*TalkRPC.HideMessageResponse, error) {
+func (cl TalkHandler) HideMessage(ctx context.Context, in *TalkRPC.HideMessageRequest) (*TalkRPC.HideMessageResponse, error) {
 
 }
-func (cl *TalkHandler) ReportMessage(ctx context.Context, in *TalkRPC.ReportMessageRequest, opts ...grpc.CallOption) (*TalkRPC.ReportMessageResponse, error) {
+func (cl TalkHandler) ReportMessage(ctx context.Context, in *TalkRPC.ReportMessageRequest) (*TalkRPC.ReportMessageResponse, error) {
 
 }

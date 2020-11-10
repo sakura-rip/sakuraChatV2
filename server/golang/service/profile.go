@@ -4,12 +4,11 @@ import (
 	"context"
 	"github.com/ch31212y/sakuraChatV2/TalkRPC"
 	"go.mongodb.org/mongo-driver/bson"
-	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
 
-func (cl *TalkHandler) UpdateProfile(ctx context.Context, in *TalkRPC.UpdateProfileRequest, opts ...grpc.CallOption) (*TalkRPC.UpdateProfileResponse, error) {
+func (cl TalkHandler) UpdateProfile(ctx context.Context, in *TalkRPC.UpdateProfileRequest) (*TalkRPC.UpdateProfileResponse, error) {
 	uuid, ok, _ := VerifyTokenAndGetUUID(ctx)
 	if ok == false {
 		return nil, status.New(codes.Unauthenticated, "Invalid Token").Err()
@@ -36,7 +35,7 @@ func (cl *TalkHandler) UpdateProfile(ctx context.Context, in *TalkRPC.UpdateProf
 	return &TalkRPC.UpdateProfileResponse{}, nil
 }
 
-func (cl *TalkHandler) GetProfile(ctx context.Context, _ *TalkRPC.GetProfileRequest, _ ...grpc.CallOption) (*TalkRPC.GetProfileResponse, error) {
+func (cl TalkHandler) GetProfile(ctx context.Context, _ *TalkRPC.GetProfileRequest) (*TalkRPC.GetProfileResponse, error) {
 	uuid, ok, _ := VerifyTokenAndGetUUID(ctx)
 	if ok == false {
 		return nil, status.New(codes.Unauthenticated, "Invalid Token").Err()

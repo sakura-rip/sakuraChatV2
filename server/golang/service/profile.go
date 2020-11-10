@@ -19,21 +19,22 @@ func (cl *TalkHandler) GetProfile(ctx context.Context, _ *TalkRPC.GetProfileRequ
 		return nil, status.New(codes.Unauthenticated, "Invalid Token").Err()
 	}
 	//FIXME: ref: https://docs.mongodb.com/manual/tutorial/project-fields-from-query-results/#return-the-specified-fields-and-the-id-field-only
-	var DBProfile database.Profile
-	filter := bson.M{"_id": uuid}
-	if err := userDB.FindOne(ctx, filter).Decode(&DBProfile); err != nil {
-		return nil, err
-	}
+
+
+	var DBuser database.User
+	user, err := findUserFromDB(uuid, bson.D{{"profile", 0}})
+
+
 	profile := &TalkRPC.GetProfileResponse{
 		Profile: &TalkRPC.Profile{
 			Uuid:        uuid,
-			Name:        DBProfile.Name,
-			Bio:         DBProfile.Bio,
-			IconPath:    DBProfile.IconPath,
-			CoverPath:   DBProfile.CoverPath,
-			TwitterID:   DBProfile.TwitterID,
-			InstagramID: DBProfile.InstagramID,
-			GithubID:    DBProfile.GithubID,
+			Name:        user.Profile.Name,
+			Bio:         user.Profile.Bio,
+			IconPath:    user.Profile.IconPath,
+			CoverPath:   user.Profile.CoverPath,
+			TwitterID:   user.Profile.TwitterID,
+			InstagramID: user.Profile.InstagramID,
+			GithubID:    user.Profile.GithubID,
 		},
 	}
 	return profile, nil

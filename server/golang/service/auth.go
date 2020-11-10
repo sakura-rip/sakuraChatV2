@@ -18,7 +18,7 @@ func (cl AuthHandler) VerifyIDToken(ctx context.Context, in *TalkRPC.VerifyIDTok
 	claims := map[string]interface{}{
 		"registered": false,
 	}
-	//premiumカラムをつけてToken 再発行
+	//registeredカラムをつけてToken 再発行
 	token, err := auth.CustomTokenWithClaims(ctx, jwt.UID, claims)
 	if err != nil {
 		return &TalkRPC.VerifyIDTokenResponse{}, status.New(codes.Internal, "internal error").Err()

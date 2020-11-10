@@ -40,6 +40,19 @@ func (cl *TalkHandler) UpdateProfile(ctx context.Context, in *TalkRPC.UpdateProf
 		return nil, status.New(codes.Internal, "db error").Err()
 	}
 
+	profile := &TalkRPC.UpdateProfileResponse{
+		Profile: &TalkRPC.Profile{
+			Uuid:        uuid,
+			Name:        user.Profile.Name,
+			Bio:         user.Profile.Bio,
+			IconPath:    user.Profile.IconPath,
+			CoverPath:   user.Profile.CoverPath,
+			TwitterID:   user.Profile.TwitterID,
+			InstagramID: user.Profile.InstagramID,
+			GithubID:    user.Profile.GithubID,
+		},
+	}
+	return profile, nil
 }
 func (cl *TalkHandler) GetProfile(ctx context.Context, _ *TalkRPC.GetProfileRequest, _ ...grpc.CallOption) (*TalkRPC.GetProfileResponse, error) {
 	uuid, ok, _ := VerifyTokenAndGetUUID(ctx)

@@ -18,6 +18,7 @@ func (cl TalkHandler) UpdateProfile(ctx context.Context, in *TalkRPC.UpdateProfi
 		switch key {
 		case TalkRPC.ProfileKey_NAME:
 			attToUpdate = append(attToUpdate, bson.E{Key: "name", Value: in.Profile.Name})
+			fallthrough
 		case TalkRPC.ProfileKey_BIO:
 			attToUpdate = append(attToUpdate, bson.E{Key: "bio", Value: in.Profile.Bio})
 		}

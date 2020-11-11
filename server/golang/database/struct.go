@@ -25,12 +25,12 @@ type Profile struct {
 }
 
 type Setting struct {
-	PrivateUserID              string `bson:"omitempty"`
-	AllowSearchByPrivateUserID bool
-	Email                      string `bson:"omitempty"`
-	AllowSearchByEmail         bool
-	UserTicket                 string `bson:"omitempty"`
-	AllowSearchByUserTicket    bool
+	PrivateUserID              string `bson:"PUserID"`
+	AllowSearchByPrivateUserID bool   `bson:"asbPUserID"`
+	Email                      string `bson:"Email"`
+	AllowSearchByEmail         bool   `bson:"asbEmail"`
+	UserTicket                 string `bson:"UTicket"`
+	AllowSearchByUserTicket    bool   `bson:"asbUTicket"`
 }
 
 type FriendRequest struct {

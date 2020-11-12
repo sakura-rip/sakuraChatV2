@@ -20,3 +20,16 @@ func findUserFromDB(id string, projection bson.D) (*database.User, error) {
 	}
 	return user, nil
 }
+
+func findProfileFromDB(uuid string) (*database.Profile, error) {
+	rs := userCol.FindOne(
+		ctx,
+		bson.D{{"_id", uuid}},
+		options.FindOne().SetProjection(bson.D{{"profile", 1}}),
+	)
+	var user *database.User
+	if rs.Decode(&user) != nil {
+		return nil, status.New(codes.NotFound, "user not found").Err()
+	}
+	return &user.Profile, nil
+}

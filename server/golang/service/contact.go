@@ -19,7 +19,18 @@ func (cl TalkHandler) GetContact(ctx context.Context, in *TalkRPC.GetContactRequ
 }
 
 func (cl TalkHandler) GetContacts(ctx context.Context, in *TalkRPC.GetContactsRequest) (*TalkRPC.GetContactsResponse, error) {
-
+	uuid, ok, _ := VerifyTokenAndGetUUID(ctx)
+	if ok == false {
+		return nil, status.New(codes.Unauthenticated, "Invalid Token").Err()
+	}
+	response := &TalkRPC.GetContactsResponse{}
+	for _, cuuid := range in.UUIDs {
+		con, err := findRPCContactFromDB(uuid, cuuid)
+		if err != nil {
+			response.Contacts = append(response.Contacts, con)
+		}
+	}
+	return response, nil
 }
 func (cl TalkHandler) UpdateContact(ctx context.Context, in *TalkRPC.UpdateContactRequest) (*TalkRPC.UpdateContactResponse, error) {
 

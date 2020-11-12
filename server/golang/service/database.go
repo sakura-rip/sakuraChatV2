@@ -9,7 +9,7 @@ import (
 )
 
 func findUserFromDB(id string, projection bson.D) (*database.User, error) {
-	rs := userDB.FindOne(
+	rs := userCol.FindOne(
 		ctx,
 		bson.D{{"_id", id}},
 		options.FindOne().SetProjection(projection),

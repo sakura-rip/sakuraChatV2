@@ -48,7 +48,7 @@ func findSettingFromDB(uuid string) (*database.Setting, error) {
 	return &user.Setting, nil
 }
 
-func findContactFromDB(uuid, targetUUID string) (*TalkRPC.Contact, error) {
+func findContactFromDB(uuid, targetUUID string) (*database.Contact, error) {
 	rs := userCol.FindOne(
 		ctx,
 		bson.D{{"_id", uuid}},

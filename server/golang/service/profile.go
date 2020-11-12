@@ -49,7 +49,7 @@ func (cl TalkHandler) GetProfile(ctx context.Context, _ *TalkRPC.GetProfileReque
 	}
 	profile := &TalkRPC.GetProfileResponse{
 		Profile: &TalkRPC.Profile{
-			Uuid:        uuid,
+			UUID:        uuid,
 			Name:        user.Profile.Name,
 			Bio:         user.Profile.Bio,
 			IconPath:    user.Profile.IconPath,

@@ -144,6 +144,21 @@ class TalkServiceStub(object):
                 request_serializer=chat__pb2.FetchEventsRequest.SerializeToString,
                 response_deserializer=chat__pb2.FetchEventsResponse.FromString,
                 )
+        self.GetAllTags = channel.unary_unary(
+                '/talk.TalkService/GetAllTags',
+                request_serializer=chat__pb2.GetAllTagsRequest.SerializeToString,
+                response_deserializer=chat__pb2.GetAllTagsResponse.FromString,
+                )
+        self.CreateTag = channel.unary_unary(
+                '/talk.TalkService/CreateTag',
+                request_serializer=chat__pb2.CreateTagRequest.SerializeToString,
+                response_deserializer=chat__pb2.CreateTagResponse.FromString,
+                )
+        self.DeleteTag = channel.unary_unary(
+                '/talk.TalkService/DeleteTag',
+                request_serializer=chat__pb2.DeleteTagRequest.SerializeToString,
+                response_deserializer=chat__pb2.DeleteTagResponse.FromString,
+                )
 
 
 class TalkServiceServicer(object):
@@ -305,6 +320,24 @@ class TalkServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetAllTags(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CreateTag(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DeleteTag(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_TalkServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -437,6 +470,21 @@ def add_TalkServiceServicer_to_server(servicer, server):
                     servicer.FetchEvents,
                     request_deserializer=chat__pb2.FetchEventsRequest.FromString,
                     response_serializer=chat__pb2.FetchEventsResponse.SerializeToString,
+            ),
+            'GetAllTags': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetAllTags,
+                    request_deserializer=chat__pb2.GetAllTagsRequest.FromString,
+                    response_serializer=chat__pb2.GetAllTagsResponse.SerializeToString,
+            ),
+            'CreateTag': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateTag,
+                    request_deserializer=chat__pb2.CreateTagRequest.FromString,
+                    response_serializer=chat__pb2.CreateTagResponse.SerializeToString,
+            ),
+            'DeleteTag': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteTag,
+                    request_deserializer=chat__pb2.DeleteTagRequest.FromString,
+                    response_serializer=chat__pb2.DeleteTagResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -887,6 +935,57 @@ class TalkService(object):
         return grpc.experimental.unary_stream(request, target, '/talk.TalkService/FetchEvents',
             chat__pb2.FetchEventsRequest.SerializeToString,
             chat__pb2.FetchEventsResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetAllTags(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/talk.TalkService/GetAllTags',
+            chat__pb2.GetAllTagsRequest.SerializeToString,
+            chat__pb2.GetAllTagsResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def CreateTag(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/talk.TalkService/CreateTag',
+            chat__pb2.CreateTagRequest.SerializeToString,
+            chat__pb2.CreateTagResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def DeleteTag(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/talk.TalkService/DeleteTag',
+            chat__pb2.DeleteTagRequest.SerializeToString,
+            chat__pb2.DeleteTagResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

@@ -12,16 +12,12 @@ func (cl TalkHandler) GetContact(ctx context.Context, in *TalkRPC.GetContactRequ
 	if ok == false {
 		return nil, status.New(codes.Unauthenticated, "Invalid Token").Err()
 	}
-	dbContact, err := findContactFromDB(uuid, in.UUID)
-	if err != nil {
-		return nil, status.New(codes.NotFound, "target not found").Err()
-	}
-	contact := TalkRPC.GetContactResponse{
-		Contact: &TalkRPC.Contact{},
-	}
-	return &contact, nil
-
+	contact, err := findRPCContactFromDB(uuid, in.UUID)
+	return &TalkRPC.GetContactResponse{
+		Contact: contact,
+	}, err
 }
+
 func (cl TalkHandler) GetContacts(ctx context.Context, in *TalkRPC.GetContactsRequest) (*TalkRPC.GetContactsResponse, error) {
 
 }

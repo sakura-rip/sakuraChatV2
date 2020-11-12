@@ -14,9 +14,9 @@ func findUserFromDB(id string, projection bson.D) (*database.User, error) {
 		bson.D{{"_id", id}},
 		options.FindOne().SetProjection(projection),
 	)
-	var usr *database.User
-	if rs.Decode(&usr) != nil {
-		return usr, status.New(codes.NotFound, "user not found").Err()
+	var user *database.User
+	if rs.Decode(&user) != nil {
+		return user, status.New(codes.NotFound, "user not found").Err()
 	}
-	return usr, nil
+	return user, nil
 }

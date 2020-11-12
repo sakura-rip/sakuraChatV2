@@ -12,6 +12,8 @@ type User struct {
 	FriendIds       []string        `bson:"FriendIds"`
 	BlockedIds      []string        `bson:"BlockedIds"`
 	DeletedIds      []string        `bson:"DeletedIds"`
+	Contacts        []Contact       `bson:"contacts"`
+	Tags            []Tag           `bson:"tags"`
 }
 
 type Profile struct {
@@ -41,4 +43,20 @@ type FriendRequest struct {
 	IsAccepted           bool   `bson:"omitempty"`
 	IsRejected           bool   `bson:"omitempty"`
 	AcceptedOrRejectedAt int64  `bson:"omitempty"`
+}
+
+type Contact struct {
+	UUID            string   `bson:"uuid`
+	OverWrittenName string   `bson:"owname"`
+	Status          int64    `bson:"status"`
+	TagIds          []string `bson:"tags"`
+}
+
+type Tag struct {
+	TagID       string `bson:"tagID"`
+	Name        string `bson:"name"`
+	Description string `bson:"description"`
+	Color       string `bson:"color"`
+	CreatorUUID string `bson:"creator"`
+	CreatedTime int64  `bson:"createdTime"`
 }

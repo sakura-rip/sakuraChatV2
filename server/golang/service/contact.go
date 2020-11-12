@@ -23,7 +23,9 @@ func (cl TalkHandler) GetContacts(ctx context.Context, in *TalkRPC.GetContactsRe
 	if ok == false {
 		return nil, status.New(codes.Unauthenticated, "Invalid Token").Err()
 	}
-	response := &TalkRPC.GetContactsResponse{}
+	response := &TalkRPC.GetContactsResponse{
+		Contacts: []*TalkRPC.Contact{},
+	}
 	for _, cuuid := range in.UUIDs {
 		con, err := findRPCContactFromDB(uuid, cuuid)
 		if err != nil {

@@ -1,7 +1,6 @@
 package service
 
 import (
-	"github.com/ch31212y/sakuraChatV2/TalkRPC"
 	"github.com/ch31212y/sakuraChatV2/database"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -49,6 +48,16 @@ func findSettingFromDB(uuid string) (*database.Setting, error) {
 }
 
 func findContactFromDB(uuid, targetUUID string) (*database.Contact, error) {
+	profile, err := findProfileFromDB(targetUUID)
+	if err != nil {
+		return nil, err
+	}
+	contact := database.Contact{
+		UUID:            targetUUID,
+		OverWrittenName: profile.Name,
+		Status:          3,
+		TagIds:          []string{},
+	}
 	rs := userCol.FindOne(
 		ctx,
 		bson.D{{"_id", uuid}},
@@ -58,4 +67,10 @@ func findContactFromDB(uuid, targetUUID string) (*database.Contact, error) {
 	if rs.Decode(&user) != nil {
 		return nil, status.New(codes.NotFound, "user not found").Err()
 	}
+	if len(user.Contacts) != 0 {
+		contact.OverWrittenName = user.Contacts[0].OverWrittenName
+		contact.Status = user.Contacts[0].Status
+		contact.TagIds = user.Contacts[0].TagIds
+	}
+	return &contact, nil
 }

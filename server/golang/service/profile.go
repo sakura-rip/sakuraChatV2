@@ -23,7 +23,7 @@ func (cl TalkHandler) UpdateProfile(ctx context.Context, in *TalkRPC.UpdateProfi
 			attToUpdate = append(attToUpdate, bson.E{Key: "bio", Value: in.Profile.Bio})
 		}
 	}
-	_, dberr := userDB.UpdateOne(
+	_, dberr := userCol.UpdateOne(
 		ctx,
 		bson.M{"_id": uuid},
 		bson.D{

@@ -36,7 +36,7 @@ func (cl TalkHandler) UpdateSetting(ctx context.Context, in *TalkRPC.UpdateSetti
 			attToUpdate = append(attToUpdate, bson.E{Key: "asbUTicket", Value: in.Setting.AllowSearchByUserTicket})
 		}
 	}
-	_, dberr := userDB.UpdateOne(
+	_, dberr := userCol.UpdateOne(
 		ctx,
 		bson.M{"_id": uuid},
 		bson.D{

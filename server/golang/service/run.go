@@ -14,11 +14,11 @@ type AuthHandler struct{}
 
 var db *database.DBClient
 
-var userDB *mongo.Collection
+var userCol *mongo.Collection
 
 func init() {
 	db.Session = database.ConnectToMongoDB()
-	userDB = db.Session.Database("sakuraChat").Collection("users")
+	userCol = db.Session.Database("sakuraChat").Collection("users")
 }
 
 func runServer() {

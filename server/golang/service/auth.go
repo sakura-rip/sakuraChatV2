@@ -54,7 +54,7 @@ func (cl AuthHandler) InitPrimaryAccount(ctx context.Context, in *TalkRPC.InitPr
 			BlockedIds:      []string{},
 			DeletedIds:      []string{},
 		}
-		_, err := userDB.InsertOne(ctx, docu)
+		_, err := userCol.InsertOne(ctx, docu)
 		if err != nil {
 			return &TalkRPC.InitPrimaryAccountResponse{}, status.New(codes.Internal, "").Err()
 		}

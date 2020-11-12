@@ -47,3 +47,15 @@ func findSettingFromDB(uuid string) (*database.Setting, error) {
 	}
 	return &user.Setting, nil
 }
+
+func findContactFromDB(uuid, targetUUID string) (*TalkRPC.Contact, error) {
+	rs := userCol.FindOne(
+		ctx,
+		bson.D{{"_id", uuid}},
+		options.FindOne().SetProjection(bson.M{"contacts": bson.M{"$elemMatch": bson.M{"uuid": targetUUID}}}),
+	)
+	var user *database.User
+	if rs.Decode(&user) != nil {
+		return nil, status.New(codes.NotFound, "user not found").Err()
+	}
+}

@@ -55,19 +55,8 @@ func (cl TalkHandler) GetSetting(ctx context.Context, in *TalkRPC.GetSettingRequ
 		return nil, status.New(codes.Unauthenticated, "Invalid Token").Err()
 	}
 
-	user, err := findUserFromDB(uuid, bson.D{{"setting", 0}})
-	if err != nil {
-		return nil, err
-	}
-	setting := &TalkRPC.GetSettingResponse{
-		Setting: &TalkRPC.Setting{
-			PrivateUserID:              user.Setting.PrivateUserID,
-			AllowSearchByPrivateUserID: user.Setting.AllowSearchByPrivateUserID,
-			Email:                      user.Setting.Email,
-			AllowSearchByEmail:         user.Setting.AllowSearchByEmail,
-			UserTicket:                 user.Setting.UserTicket,
-			AllowSearchByUserTicket:    user.Setting.AllowSearchByUserTicket,
-		},
-	}
-	return setting, nil
+	setting, err := findRPCSettingFromDB(uuid)
+	return &TalkRPC.GetSettingResponse{
+		Setting: setting,
+	}, err
 }

@@ -82,7 +82,7 @@ enum ProfileKey {
 }
 
 message Profile {
-    string uuid = 1;
+    string UUID = 1;
     string name = 2;
     string bio = 3;
     reserved 4, 5 to 10;
@@ -120,12 +120,12 @@ message FindUserByUserIDResponse {
 
 message GetAllBlockedIdsRequest {}
 message GetAllBlockedIdsResponse {
-    repeated string uuids = 1;
+    repeated string UUIDs = 1;
 }
 
 
 message GetFriendRequestStatusRequest {
-    repeated string uuids = 1;
+    repeated string UUIDs = 1;
 }
 message GetFriendRequestStatusResponse {
     repeated FriendRequest requests = 1;
@@ -186,7 +186,7 @@ message FriendRequest {
 }
 
 message ReportContactRequest {
-    string uuid = 1;
+    string UUID = 1;
     string reason = 2;
     string metaData = 3;
 }
@@ -194,7 +194,7 @@ message ReportContactResponse {}
 
 
 message BlockContactRequest {
-    string uuid  =1;
+    string UUID  =1;
 }
 message BlockContactResponse{}
 
@@ -208,7 +208,7 @@ message UpdateContactResponse {
 
 
 message GetContactsRequest {
-    repeated string uuids = 1;
+    repeated string UUIDs = 1;
 }
 message GetContactsResponse {
     repeated Contact contacts = 1;
@@ -263,7 +263,7 @@ message Message {
 }
 
 message Reader {
-    string uuid = 1;
+    string UUID = 1;
     int64  index = 2;
     int64 readTime = 3;
     int64 messageID = 4;
@@ -283,7 +283,7 @@ enum ToType {
 }
 
 message GetContactRequest {
-    string uuid = 1;
+    string UUID = 1;
 }
 message GetContactResponse {
     Contact contact = 1;
@@ -291,29 +291,50 @@ message GetContactResponse {
 
 
 message Contact {
-    string uuid = 1;
+    string UUID = 1;
     string name = 2;
     string overWrittenName = 3;
     string metaData = 4;
     FriendStatus status = 5;
     reserved 6, 7;
-    repeated Tag tags = 8;
+    repeated string tagIds = 8;
 }
 
 enum FriendStatus {
     friend = 0;
     block = 1;
     delete = 2;
+    nothing = 3;
 }
 
 message Tag {
-    string name = 1;
-    string description = 2;
-    string color = 3;
-    string creatorUUID = 4;
-    int64 createdTime = 5;
+    string tagID = 1;
+    string name = 2;
+    string description = 3;
+    string color = 4;
+    string creatorUUID = 5;
+    int64 createdTime = 6;
 }
 
+message GetAllTagsRequest {
+} 
+message GetAllTagsResponse{
+    repeated Tag tags = 1;
+}
+
+message CreateTagRequest {
+    Tag tag = 1;
+} 
+
+message CreateTagResponse{
+}
+
+message DeleteTagRequest {
+    string tagID = 1;
+} 
+
+message DeleteTagResponse{
+}
 
 
 service TalkService {
@@ -350,6 +371,10 @@ service TalkService {
     rpc GetSetting (GetSettingRequest) returns (GetSettingResponse);
 
     rpc FetchEvents (FetchEventsRequest) returns (stream FetchEventsResponse);
+
+    rpc GetAllTags (GetAllTagsRequest) returns (GetAllTagsResponse);
+    rpc CreateTag (CreateTagRequest) returns (CreateTagResponse);
+    rpc DeleteTag (DeleteTagRequest) returns (DeleteTagResponse);
 }
 
 

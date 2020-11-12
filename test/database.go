@@ -26,7 +26,7 @@ var col *mongo.Collection
 func insert() {
 	doc := User{
 		ID:       "ID1",
-		Contacts: []Contact{Contact{Name: "name1", UUID: "uuid1"}, Contact{Name: "name2", UUID: "uuid2"}},
+		Contacts: []Contact{{Name: "name1", UUID: "uuid1"}, {Name: "name2", UUID: "uuid2"}},
 	}
 	col.InsertOne(context.Background(), doc)
 }
@@ -48,7 +48,7 @@ func findArray() {
 	rs := col.FindOne(
 		context.Background(),
 		bson.D{{"_id", "ID1"}},
-		options.FindOne().SetProjection(bson.M{"contacts": bson.M{"$elemMatch": bson.M{"uuid": "uuid1"}}}),
+		options.FindOne().SetProjection(bson.M{"contacts": bson.M{"$elemMatch": bson.M{"uuid": "dfasdfa"}}}),
 	)
 	var usr *User
 	if err := rs.Decode(&usr); err != nil {

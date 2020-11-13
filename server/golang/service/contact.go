@@ -37,9 +37,9 @@ func (cl TalkHandler) GetContacts(ctx context.Context, in *TalkRPC.GetContactsRe
 func (cl TalkHandler) UpdateContact(ctx context.Context, in *TalkRPC.UpdateContactRequest) (*TalkRPC.UpdateContactResponse, error) {
 
 }
+
 func (cl TalkHandler) BlockContact(ctx context.Context, in *TalkRPC.BlockContactRequest) (*TalkRPC.BlockContactResponse, error) {
 
 }
 func (cl TalkHandler) ReportContact(ctx context.Context, in *TalkRPC.ReportContactRequest) (*TalkRPC.ReportContactResponse, error) {
-
 }

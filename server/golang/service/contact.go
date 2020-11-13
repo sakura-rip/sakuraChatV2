@@ -3,6 +3,8 @@ package service
 import (
 	"context"
 	"github.com/ch31212y/sakuraChatV2/TalkRPC"
+	"github.com/ch31212y/sakuraChatV2/database"
+	"go.mongodb.org/mongo-driver/bson"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -39,7 +41,10 @@ func (cl TalkHandler) UpdateContact(ctx context.Context, in *TalkRPC.UpdateConta
 }
 
 func (cl TalkHandler) BlockContact(ctx context.Context, in *TalkRPC.BlockContactRequest) (*TalkRPC.BlockContactResponse, error) {
-
+	uuid, ok, _ := VerifyTokenAndGetUUID(ctx)
+	if ok == false {
+		return nil, status.New(codes.Unauthenticated, "Invalid Token").Err()
+	}
 }
 func (cl TalkHandler) ReportContact(ctx context.Context, in *TalkRPC.ReportContactRequest) (*TalkRPC.ReportContactResponse, error) {
 }

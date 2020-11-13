@@ -11,9 +11,10 @@ import (
 
 // User b
 type User struct {
-	ID       string    `bson:"_id"`
-	Contacts []Contact `bson:"contacts"`
-	BIDs     []string  `bson:"BIDs"`
+	ID       string            `bson:"_id"`
+	Contacts []Contact         `bson:"contacts"`
+	BIDs     []string          `bson:"BIDs"`
+	MapTest  map[string]string `bson:"MapTest"`
 }
 
 // Contact a
@@ -29,6 +30,16 @@ func insert() {
 		ID:       "ID1",
 		Contacts: []Contact{{Name: "name1", UUID: "uuid1"}, {Name: "name2", UUID: "uuid2"}},
 		BIDs:     []string{"aaa", "aaa", "bbbb"},
+	}
+	col.InsertOne(context.Background(), doc)
+}
+
+func maptest() {
+	doc := User{
+		ID:       "ID2",
+		Contacts: []Contact{{Name: "name2", UUID: "uuid2"}, {Name: "name3", UUID: "uuid3"}},
+		BIDs:     []string{"aaa", "aaa", "bbbb"},
+		MapTest:  map[string]string{"test": "dayo"},
 	}
 	col.InsertOne(context.Background(), doc)
 }
@@ -82,5 +93,6 @@ func main() {
 	// findArray()
 	// insert()
 	// find()
-	pushArray()
+	// pushArray()
+	maptest()
 }

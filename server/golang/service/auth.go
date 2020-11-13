@@ -28,7 +28,7 @@ func (cl AuthHandler) VerifyIDToken(ctx context.Context, in *TalkRPC.VerifyIDTok
 	return &TalkRPC.VerifyIDTokenResponse{}, nil
 }
 
-func (cl AuthHandler) InitPrimaryAccount(ctx context.Context, in *TalkRPC.InitPrimaryAccountRequest) (*TalkRPC.InitPrimaryAccountResponse, error) {
+func (cl AuthHandler) InitPrimaryAccount(ctx context.Context, _ *TalkRPC.InitPrimaryAccountRequest) (*TalkRPC.InitPrimaryAccountResponse, error) {
 	token, ok := getHeader(ctx, "X-Chat-Access")
 	if ok == false {
 		return &TalkRPC.InitPrimaryAccountResponse{}, status.New(codes.Unauthenticated, "").Err()

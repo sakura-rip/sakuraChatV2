@@ -80,6 +80,13 @@ func pushArray() {
 	}
 	fmt.Println(rs)
 }
+func pushArrays() {
+	rs, err := col.UpdateOne(context.Background(), bson.M{"_id": "ID2"}, bson.M{"$set": bson.M{"MapTest.tefasdfad": Contact{Name: "asdas", UUID: "fdsfa"}}})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(rs)
+}
 func findMap(uuid string) {
 	rs := col.FindOne(
 		context.Background(),
@@ -107,5 +114,7 @@ func main() {
 	// find()
 	// pushArray()
 	// maptest()
-	findMap("testuuid")
+	// maptest()
+	pushArrays()
+	// findMap("testuuid")
 }

@@ -33,6 +33,7 @@ func (cl TalkHandler) FindUserByUserID(ctx context.Context, in *TalkRPC.FindUser
 		Contact: contact,
 	}, nil
 }
+
 func (cl TalkHandler) FindUserByTicket(ctx context.Context, in *TalkRPC.FindUserByTicketRequest) (*TalkRPC.FindUserByTicketResponse, error) {
 
 }

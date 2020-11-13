@@ -13,6 +13,7 @@ import (
 type User struct {
 	ID       string    `bson:"_id"`
 	Contacts []Contact `bson:"contacts"`
+	BIDs     []string  `bson:"BIDs"`
 }
 
 // Contact a
@@ -58,6 +59,14 @@ func findArray() {
 		fmt.Println(con.Name)
 	}
 	fmt.Println(usr)
+}
+
+func pushArray() {
+	rs, err := col.UpdateOne(context.Background(), bson.M{"_id": "ID1"}, bson.M{"$push": bson.M{"BIDs": "aaaafafsdaa"}})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(rs)
 }
 
 func main() {

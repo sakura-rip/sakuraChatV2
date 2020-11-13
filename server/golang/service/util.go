@@ -8,3 +8,11 @@ func isStrInStrSlice(base []string, target string) bool {
 	}
 	return false
 }
+
+func mapToSlice(targetMap map[string]string) []string {
+	var slice []string
+	for key := range targetMap {
+		slice = append(slice, key)
+	}
+	return slice
+}

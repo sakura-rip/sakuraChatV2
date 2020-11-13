@@ -3,8 +3,6 @@ package service
 import (
 	"context"
 	"github.com/ch31212y/sakuraChatV2/TalkRPC"
-	"github.com/ch31212y/sakuraChatV2/database"
-	"go.mongodb.org/mongo-driver/bson"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )

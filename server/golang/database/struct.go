@@ -45,7 +45,7 @@ type FriendRequest struct {
 	AcceptedOrRejectedAt int64  `bson:"omitempty"`
 }
 type Contact struct {
-	UUID            string           `bson:"uuid`
+	UUID            string           `bson:"uuid"`
 	OverWrittenName string           `bson:"owname"`
 	Status          int64            `bson:"status"`
 	TagIds          map[string]int64 `bson:"tags"`

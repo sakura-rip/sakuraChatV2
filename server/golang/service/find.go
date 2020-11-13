@@ -58,5 +58,25 @@ func (cl TalkHandler) FindUserByTicket(ctx context.Context, in *TalkRPC.FindUser
 
 }
 func (cl TalkHandler) FindUserByEmail(ctx context.Context, in *TalkRPC.FindUserByEmailRequest) (*TalkRPC.FindUserByEmailResponse, error) {
+	uuid, ok, _ := VerifyTokenAndGetUUID(ctx)
+	if ok == false {
+		return nil, status.New(codes.Unauthenticated, "Invalid Token").Err()
+	}
+	rs := userCol.FindOne(
+		ctx,
+		bson.D{{"setting.Email", in.Email}, {"setting.asbEmail", true}},
+		options.FindOne().SetProjection(bson.M{"_id": 1}),
+	)
+	var user *database.User
+	if rs.Decode(&user) != nil {
+		return nil, status.New(codes.NotFound, "No user found").Err()
+	}
+	contact, err := findRPCContactFromDB(uuid, user.ID)
+	if err != nil {
+		return nil, status.New(codes.NotFound, "No user found").Err()
+	}
+	return &TalkRPC.FindUserByEmailResponse{
+		Contact: contact,
+	}, nil
 
 }

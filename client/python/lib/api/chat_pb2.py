@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z\t.;TalkRPC',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\nchat.proto\x12\x04talk\"#\n\x12\x46\x65tchEventsRequest\x12\r\n\x05index\x18\x01 \x01(\x03\"V\n\x13\x46\x65tchEventsResponse\x12\x1b\n\x06\x65vents\x18\x01 \x03(\x0b\x32\x0b.talk.Event\x12\"\n\teventType\x18\x02 \x01(\x0e\x32\x0f.talk.EventType\"6\n\x05\x45vent\x12\r\n\x05index\x18\x01 \x01(\x03\x12\x1e\n\x07message\x18\x02 \x01(\x0b\x32\r.talk.Message\"\x13\n\x11GetSettingRequest\"4\n\x12GetSettingResponse\x12\x1e\n\x07setting\x18\x01 \x01(\x0b\x32\r.talk.Setting\"V\n\x14UpdateSettingRequest\x12\x1e\n\x04keys\x18\x01 \x03(\x0e\x32\x10.talk.SettingKey\x12\x1e\n\x07setting\x18\x02 \x01(\x0b\x32\r.talk.Setting\"7\n\x15UpdateSettingResponse\x12\x1e\n\x07setting\x18\x01 \x01(\x0b\x32\r.talk.Setting\"\xa4\x01\n\x07Setting\x12\x15\n\rprivateUserID\x18\x01 \x01(\t\x12\"\n\x1a\x61llowSearchByPrivateUserID\x18\x02 \x01(\x08\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x12\x1a\n\x12\x61llowSearchByEmail\x18\x04 \x01(\x08\x12\x12\n\nuserTicket\x18\x05 \x01(\t\x12\x1f\n\x17\x61llowSearchByUserTicket\x18\x06 \x01(\x08\"\x13\n\x11GetProfileRequest\"4\n\x12GetProfileResponse\x12\x1e\n\x07profile\x18\x01 \x01(\x0b\x32\r.talk.Profile\"V\n\x14UpdateProfileRequest\x12\x1e\n\x04keys\x18\x01 \x03(\x0e\x32\x10.talk.ProfileKey\x12\x1e\n\x07profile\x18\x02 \x01(\x0b\x32\r.talk.Profile\"\x17\n\x15UpdateProfileResponse\"\x9d\x01\n\x07Profile\x12\x0c\n\x04UUID\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0b\n\x03\x62io\x18\x03 \x01(\t\x12\x10\n\x08iconPath\x18\x0b \x01(\t\x12\x11\n\tcoverPath\x18\x0c \x01(\t\x12\x11\n\ttwitterID\x18\r \x01(\t\x12\x13\n\x0binstagramID\x18\x0e \x01(\t\x12\x10\n\x08githubID\x18\x0f \x01(\tJ\x04\x08\x04\x10\x05J\x04\x08\x05\x10\x0b\"\'\n\x16\x46indUserByEmailRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\"9\n\x17\x46indUserByEmailResponse\x12\x1e\n\x07\x63ontact\x18\x01 \x01(\x0b\x32\r.talk.Contact\")\n\x17\x46indUserByTicketRequest\x12\x0e\n\x06ticket\x18\x01 \x01(\t\":\n\x18\x46indUserByTicketResponse\x12\x1e\n\x07\x63ontact\x18\x01 \x01(\x0b\x32\r.talk.Contact\")\n\x17\x46indUserByUserIDRequest\x12\x0e\n\x06userID\x18\x01 \x01(\t\":\n\x18\x46indUserByUserIDResponse\x12\x1e\n\x07\x63ontact\x18\x01 \x01(\x0b\x32\r.talk.Contact\"\x19\n\x17GetAllBlockedIdsRequest\")\n\x18GetAllBlockedIdsResponse\x12\r\n\x05UUIDs\x18\x01 \x03(\t\".\n\x1dGetFriendRequestStatusRequest\x12\r\n\x05UUIDs\x18\x01 \x03(\t\"G\n\x1eGetFriendRequestStatusResponse\x12%\n\x08requests\x18\x01 \x03(\x0b\x32\x13.talk.FriendRequest\"!\n\x1fGetALlFriendRequestedIdsRequest\"I\n GetALlFriendRequestedIdsResponse\x12%\n\x08requests\x18\x01 \x03(\x0b\x32\x13.talk.FriendRequest\"\x1f\n\x1dGetAllFriendRequestIdsRequest\"G\n\x1eGetAllFriendRequestIdsResponse\x12%\n\x08requests\x18\x01 \x03(\x0b\x32\x13.talk.FriendRequest\"\x18\n\x16GetAllFriendIdsRequest\"&\n\x17GetAllFriendIdsResponse\x12\x0b\n\x03ids\x18\x01 \x03(\t\"B\n\x1aRejectFriendRequestRequest\x12$\n\x07request\x18\x01 \x01(\x0b\x32\x13.talk.FriendRequest\"=\n\x1bRejectFriendRequestResponse\x12\x1e\n\x07\x63ontact\x18\x01 \x01(\x0b\x32\r.talk.Contact\"B\n\x1a\x41\x63\x63\x65ptFriendRequestRequest\x12$\n\x07request\x18\x01 \x01(\x0b\x32\x13.talk.FriendRequest\"=\n\x1b\x41\x63\x63\x65ptFriendRequestResponse\x12\x1e\n\x07\x63ontact\x18\x01 \x01(\x0b\x32\r.talk.Contact\"@\n\x18SendFriendRequestRequest\x12$\n\x07request\x18\x01 \x01(\x0b\x32\x13.talk.FriendRequest\";\n\x19SendFriendRequestResponse\x12\x1e\n\x07\x63ontact\x18\x01 \x01(\x0b\x32\r.talk.Contact\"\x9a\x01\n\rFriendRequest\x12\x0e\n\x06\x66romID\x18\x01 \x01(\t\x12\x0c\n\x04toID\x18\x02 \x01(\t\x12\x13\n\x0b\x63reatedTIme\x18\x03 \x01(\x03\x12\x10\n\x08metaData\x18\x04 \x01(\t\x12\x12\n\nisAccepted\x18\x05 \x01(\x08\x12\x12\n\nisRejected\x18\x06 \x01(\x08\x12\x1c\n\x14\x61\x63\x63\x65ptedOrRejectedAt\x18\x07 \x01(\x03\"F\n\x14ReportContactRequest\x12\x0c\n\x04UUID\x18\x01 \x01(\t\x12\x0e\n\x06reason\x18\x02 \x01(\t\x12\x10\n\x08metaData\x18\x03 \x01(\t\"\x17\n\x15ReportContactResponse\"#\n\x13\x42lockContactRequest\x12\x0c\n\x04UUID\x18\x01 \x01(\t\"\x16\n\x14\x42lockContactResponse\"6\n\x14UpdateContactRequest\x12\x1e\n\x07\x63ontact\x18\x01 \x01(\x0b\x32\r.talk.Contact\"7\n\x15UpdateContactResponse\x12\x1e\n\x07\x63ontact\x18\x01 \x01(\x0b\x32\r.talk.Contact\"#\n\x12GetContactsRequest\x12\r\n\x05UUIDs\x18\x01 \x03(\t\"6\n\x13GetContactsResponse\x12\x1f\n\x08\x63ontacts\x18\x01 \x03(\x0b\x32\r.talk.Contact\"9\n\x14ReportMessageRequest\x12\x11\n\tmessageID\x18\x01 \x01(\x03\x12\x0e\n\x06reason\x18\x02 \x01(\t\"\x17\n\x15ReportMessageResponse\"\'\n\x12HideMessageRequest\x12\x11\n\tmessageID\x18\x01 \x01(\x03\"\x15\n\x13HideMessageResponse\")\n\x14UnsendMessageRequest\x12\x11\n\tmessageID\x18\x01 \x01(\t\"\x17\n\x15UnsendMessageResponse\"4\n\x12\x45\x64itMessageRequest\x12\x1e\n\x07message\x18\x01 \x01(\x0b\x32\r.talk.Message\"5\n\x13\x45\x64itMessageResponse\x12\x1e\n\x07message\x18\x01 \x01(\x0b\x32\r.talk.Message\"4\n\x12SendMessageRequest\x12\x1e\n\x07message\x18\x01 \x01(\x0b\x32\r.talk.Message\"5\n\x13SendMessageResponse\x12\x1e\n\x07message\x18\x01 \x01(\x0b\x32\r.talk.Message\"\xd4\x01\n\x07Message\x12\x0c\n\x04text\x18\x01 \x01(\t\x12\x0e\n\x06\x66romID\x18\x02 \x01(\t\x12\x0c\n\x04toID\x18\x03 \x01(\t\x12\x1c\n\x06toType\x18\x07 \x01(\x0e\x32\x0c.talk.ToType\x12\"\n\x07msgType\x18\x08 \x01(\x0e\x32\x11.talk.MessageType\x12\x11\n\tmessageID\x18\n \x01(\x03\x12\x11\n\treadCount\x18\x0b \x01(\x03\x12\x1d\n\x07readers\x18\x0c \x03(\x0b\x32\x0c.talk.ReaderJ\x04\x08\x04\x10\x05J\x04\x08\x05\x10\x06J\x04\x08\x06\x10\x07J\x04\x08\t\x10\n\"J\n\x06Reader\x12\x0c\n\x04UUID\x18\x01 \x01(\t\x12\r\n\x05index\x18\x02 \x01(\x03\x12\x10\n\x08readTime\x18\x03 \x01(\x03\x12\x11\n\tmessageID\x18\x04 \x01(\x03\"!\n\x11GetContactRequest\x12\x0c\n\x04UUID\x18\x01 \x01(\t\"4\n\x12GetContactResponse\x12\x1e\n\x07\x63ontact\x18\x01 \x01(\x0b\x32\r.talk.Contact\"\x90\x01\n\x07\x43ontact\x12\x0c\n\x04UUID\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x17\n\x0foverWrittenName\x18\x03 \x01(\t\x12\x10\n\x08metaData\x18\x04 \x01(\t\x12\"\n\x06status\x18\x05 \x01(\x0e\x32\x12.talk.FriendStatus\x12\x0e\n\x06tagIds\x18\x08 \x03(\tJ\x04\x08\x06\x10\x07J\x04\x08\x07\x10\x08\"p\n\x03Tag\x12\r\n\x05tagID\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\r\n\x05\x63olor\x18\x04 \x01(\t\x12\x13\n\x0b\x63reatorUUID\x18\x05 \x01(\t\x12\x13\n\x0b\x63reatedTime\x18\x06 \x01(\x03\"\x13\n\x11GetAllTagsRequest\"-\n\x12GetAllTagsResponse\x12\x17\n\x04tags\x18\x01 \x03(\x0b\x32\t.talk.Tag\"*\n\x10\x43reateTagRequest\x12\x16\n\x03tag\x18\x01 \x01(\x0b\x32\t.talk.Tag\"\x13\n\x11\x43reateTagResponse\"!\n\x10\x44\x65leteTagRequest\x12\r\n\x05tagID\x18\x01 \x01(\t\"\x13\n\x11\x44\x65leteTagResponse\"(\n\x14VerifyIDTokenRequest\x12\x10\n\x08jwtToken\x18\x01 \x01(\t\"\x17\n\x15VerifyIDTokenResponse\"\x1b\n\x19InitPrimaryAccountRequest\"\x1c\n\x1aInitPrimaryAccountResponse*2\n\tEventType\x12\x13\n\x0fRECEIVE_MESSAGE\x10\x00\x12\x10\n\x0cSEND_MESSAGE\x10\x01*\x9e\x01\n\nSettingKey\x12\x13\n\x0fPRIVATE_USER_ID\x10\x00\x12#\n\x1f\x41LLOW_SEARCH_BY_PRIVATE_USER_ID\x10\x01\x12\t\n\x05\x45MAIL\x10\x02\x12\x19\n\x15\x41LLOW_SEARCH_BY_EMAIL\x10\x03\x12\x0f\n\x0bUSER_TICKET\x10\x04\x12\x1f\n\x1b\x41LLOW_SEARCH_BY_USER_TICKET\x10\x05*\x1f\n\nProfileKey\x12\x08\n\x04NAME\x10\x00\x12\x07\n\x03\x42IO\x10\x01*:\n\x0bMessageType\x12\x08\n\x04TEXT\x10\x00\x12\t\n\x05IMAGE\x10\x01\x12\t\n\x05VIDEO\x10\x02\x12\x0b\n\x07STICKER\x10\x03*\'\n\x06ToType\x12\x08\n\x04USER\x10\x00\x12\t\n\x05GROUP\x10\x01\x12\x08\n\x04ROOM\x10\x02*>\n\x0c\x46riendStatus\x12\n\n\x06\x66riend\x10\x00\x12\t\n\x05\x62lock\x10\x01\x12\n\n\x06\x64\x65lete\x10\x02\x12\x0b\n\x07nothing\x10\x03\x32\xc2\x11\n\x0bTalkService\x12\x42\n\x0bSendMessage\x12\x18.talk.SendMessageRequest\x1a\x19.talk.SendMessageResponse\x12\x42\n\x0b\x45\x64itMessage\x12\x18.talk.EditMessageRequest\x1a\x19.talk.EditMessageResponse\x12H\n\rUnsendMessage\x12\x1a.talk.UnsendMessageRequest\x1a\x1b.talk.UnsendMessageResponse\x12\x42\n\x0bHideMessage\x12\x18.talk.HideMessageRequest\x1a\x19.talk.HideMessageResponse\x12H\n\rReportMessage\x12\x1a.talk.ReportMessageRequest\x1a\x1b.talk.ReportMessageResponse\x12?\n\nGetContact\x12\x17.talk.GetContactRequest\x1a\x18.talk.GetContactResponse\x12\x42\n\x0bGetContacts\x12\x18.talk.GetContactsRequest\x1a\x19.talk.GetContactsResponse\x12H\n\rUpdateContact\x12\x1a.talk.UpdateContactRequest\x1a\x1b.talk.UpdateContactResponse\x12\x45\n\x0c\x42lockContact\x12\x19.talk.BlockContactRequest\x1a\x1a.talk.BlockContactResponse\x12H\n\rReportContact\x12\x1a.talk.ReportContactRequest\x1a\x1b.talk.ReportContactResponse\x12T\n\x11SendFriendRequest\x12\x1e.talk.SendFriendRequestRequest\x1a\x1f.talk.SendFriendRequestResponse\x12Z\n\x13\x41\x63\x63\x65ptFriendRequest\x12 .talk.AcceptFriendRequestRequest\x1a!.talk.AcceptFriendRequestResponse\x12Z\n\x13RejectFriendRequest\x12 .talk.RejectFriendRequestRequest\x1a!.talk.RejectFriendRequestResponse\x12N\n\x0fGetAllFriendIds\x12\x1c.talk.GetAllFriendIdsRequest\x1a\x1d.talk.GetAllFriendIdsResponse\x12\x63\n\x16GetAllFriendRequestIds\x12#.talk.GetAllFriendRequestIdsRequest\x1a$.talk.GetAllFriendRequestIdsResponse\x12i\n\x18GetALlFriendRequestedIds\x12%.talk.GetALlFriendRequestedIdsRequest\x1a&.talk.GetALlFriendRequestedIdsResponse\x12\x63\n\x16GetFriendRequestStatus\x12#.talk.GetFriendRequestStatusRequest\x1a$.talk.GetFriendRequestStatusResponse\x12Q\n\x10GetAllBlockedIds\x12\x1d.talk.GetAllBlockedIdsRequest\x1a\x1e.talk.GetAllBlockedIdsResponse\x12Q\n\x10\x46indUserByUserID\x12\x1d.talk.FindUserByUserIDRequest\x1a\x1e.talk.FindUserByUserIDResponse\x12Q\n\x10\x46indUserByTicket\x12\x1d.talk.FindUserByTicketRequest\x1a\x1e.talk.FindUserByTicketResponse\x12N\n\x0f\x46indUserByEmail\x12\x1c.talk.FindUserByEmailRequest\x1a\x1d.talk.FindUserByEmailResponse\x12H\n\rUpdateProfile\x12\x1a.talk.UpdateProfileRequest\x1a\x1b.talk.UpdateProfileResponse\x12?\n\nGetProfile\x12\x17.talk.GetProfileRequest\x1a\x18.talk.GetProfileResponse\x12H\n\rUpdateSetting\x12\x1a.talk.UpdateSettingRequest\x1a\x1b.talk.UpdateSettingResponse\x12?\n\nGetSetting\x12\x17.talk.GetSettingRequest\x1a\x18.talk.GetSettingResponse\x12\x44\n\x0b\x46\x65tchEvents\x12\x18.talk.FetchEventsRequest\x1a\x19.talk.FetchEventsResponse0\x01\x12?\n\nGetAllTags\x12\x17.talk.GetAllTagsRequest\x1a\x18.talk.GetAllTagsResponse\x12<\n\tCreateTag\x12\x16.talk.CreateTagRequest\x1a\x17.talk.CreateTagResponse\x12<\n\tDeleteTag\x12\x16.talk.DeleteTagRequest\x1a\x17.talk.DeleteTagResponse2\xb0\x01\n\x0b\x41uthService\x12H\n\rVerifyIDToken\x12\x1a.talk.VerifyIDTokenRequest\x1a\x1b.talk.VerifyIDTokenResponse\x12W\n\x12InitPrimaryAccount\x12\x1f.talk.InitPrimaryAccountRequest\x1a .talk.InitPrimaryAccountResponseB\x0bZ\t.;TalkRPCb\x06proto3'
+  serialized_pb=b'\n\nchat.proto\x12\x04talk\"#\n\x12\x46\x65tchEventsRequest\x12\r\n\x05index\x18\x01 \x01(\x03\"V\n\x13\x46\x65tchEventsResponse\x12\x1b\n\x06\x65vents\x18\x01 \x03(\x0b\x32\x0b.talk.Event\x12\"\n\teventType\x18\x02 \x01(\x0e\x32\x0f.talk.EventType\"6\n\x05\x45vent\x12\r\n\x05index\x18\x01 \x01(\x03\x12\x1e\n\x07message\x18\x02 \x01(\x0b\x32\r.talk.Message\"\x13\n\x11GetSettingRequest\"4\n\x12GetSettingResponse\x12\x1e\n\x07setting\x18\x01 \x01(\x0b\x32\r.talk.Setting\"V\n\x14UpdateSettingRequest\x12\x1e\n\x04keys\x18\x01 \x03(\x0e\x32\x10.talk.SettingKey\x12\x1e\n\x07setting\x18\x02 \x01(\x0b\x32\r.talk.Setting\"7\n\x15UpdateSettingResponse\x12\x1e\n\x07setting\x18\x01 \x01(\x0b\x32\r.talk.Setting\"\xa4\x01\n\x07Setting\x12\x15\n\rprivateUserID\x18\x01 \x01(\t\x12\"\n\x1a\x61llowSearchByPrivateUserID\x18\x02 \x01(\x08\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x12\x1a\n\x12\x61llowSearchByEmail\x18\x04 \x01(\x08\x12\x12\n\nuserTicket\x18\x05 \x01(\t\x12\x1f\n\x17\x61llowSearchByUserTicket\x18\x06 \x01(\x08\"\x13\n\x11GetProfileRequest\"4\n\x12GetProfileResponse\x12\x1e\n\x07profile\x18\x01 \x01(\x0b\x32\r.talk.Profile\"V\n\x14UpdateProfileRequest\x12\x1e\n\x04keys\x18\x01 \x03(\x0e\x32\x10.talk.ProfileKey\x12\x1e\n\x07profile\x18\x02 \x01(\x0b\x32\r.talk.Profile\"\x17\n\x15UpdateProfileResponse\"\x9d\x01\n\x07Profile\x12\x0c\n\x04UUID\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0b\n\x03\x62io\x18\x03 \x01(\t\x12\x10\n\x08iconPath\x18\x0b \x01(\t\x12\x11\n\tcoverPath\x18\x0c \x01(\t\x12\x11\n\ttwitterID\x18\r \x01(\t\x12\x13\n\x0binstagramID\x18\x0e \x01(\t\x12\x10\n\x08githubID\x18\x0f \x01(\tJ\x04\x08\x04\x10\x05J\x04\x08\x05\x10\x0b\"\'\n\x16\x46indUserByEmailRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\"9\n\x17\x46indUserByEmailResponse\x12\x1e\n\x07\x63ontact\x18\x01 \x01(\x0b\x32\r.talk.Contact\")\n\x17\x46indUserByTicketRequest\x12\x0e\n\x06ticket\x18\x01 \x01(\t\":\n\x18\x46indUserByTicketResponse\x12\x1e\n\x07\x63ontact\x18\x01 \x01(\x0b\x32\r.talk.Contact\"0\n\x17\x46indUserByUserIDRequest\x12\x15\n\rprivateUserID\x18\x01 \x01(\t\":\n\x18\x46indUserByUserIDResponse\x12\x1e\n\x07\x63ontact\x18\x01 \x01(\x0b\x32\r.talk.Contact\"\x19\n\x17GetAllBlockedIdsRequest\")\n\x18GetAllBlockedIdsResponse\x12\r\n\x05UUIDs\x18\x01 \x03(\t\".\n\x1dGetFriendRequestStatusRequest\x12\r\n\x05UUIDs\x18\x01 \x03(\t\"G\n\x1eGetFriendRequestStatusResponse\x12%\n\x08requests\x18\x01 \x03(\x0b\x32\x13.talk.FriendRequest\"!\n\x1fGetALlFriendRequestedIdsRequest\"I\n GetALlFriendRequestedIdsResponse\x12%\n\x08requests\x18\x01 \x03(\x0b\x32\x13.talk.FriendRequest\"\x1f\n\x1dGetAllFriendRequestIdsRequest\"G\n\x1eGetAllFriendRequestIdsResponse\x12%\n\x08requests\x18\x01 \x03(\x0b\x32\x13.talk.FriendRequest\"\x18\n\x16GetAllFriendIdsRequest\"&\n\x17GetAllFriendIdsResponse\x12\x0b\n\x03ids\x18\x01 \x03(\t\"B\n\x1aRejectFriendRequestRequest\x12$\n\x07request\x18\x01 \x01(\x0b\x32\x13.talk.FriendRequest\"=\n\x1bRejectFriendRequestResponse\x12\x1e\n\x07\x63ontact\x18\x01 \x01(\x0b\x32\r.talk.Contact\"B\n\x1a\x41\x63\x63\x65ptFriendRequestRequest\x12$\n\x07request\x18\x01 \x01(\x0b\x32\x13.talk.FriendRequest\"=\n\x1b\x41\x63\x63\x65ptFriendRequestResponse\x12\x1e\n\x07\x63ontact\x18\x01 \x01(\x0b\x32\r.talk.Contact\"@\n\x18SendFriendRequestRequest\x12$\n\x07request\x18\x01 \x01(\x0b\x32\x13.talk.FriendRequest\";\n\x19SendFriendRequestResponse\x12\x1e\n\x07\x63ontact\x18\x01 \x01(\x0b\x32\r.talk.Contact\"\x9a\x01\n\rFriendRequest\x12\x0e\n\x06\x66romID\x18\x01 \x01(\t\x12\x0c\n\x04toID\x18\x02 \x01(\t\x12\x13\n\x0b\x63reatedTIme\x18\x03 \x01(\x03\x12\x10\n\x08metaData\x18\x04 \x01(\t\x12\x12\n\nisAccepted\x18\x05 \x01(\x08\x12\x12\n\nisRejected\x18\x06 \x01(\x08\x12\x1c\n\x14\x61\x63\x63\x65ptedOrRejectedAt\x18\x07 \x01(\x03\"F\n\x14ReportContactRequest\x12\x0c\n\x04UUID\x18\x01 \x01(\t\x12\x0e\n\x06reason\x18\x02 \x01(\t\x12\x10\n\x08metaData\x18\x03 \x01(\t\"\x17\n\x15ReportContactResponse\"#\n\x13\x42lockContactRequest\x12\x0c\n\x04UUID\x18\x01 \x01(\t\"\x16\n\x14\x42lockContactResponse\"6\n\x14UpdateContactRequest\x12\x1e\n\x07\x63ontact\x18\x01 \x01(\x0b\x32\r.talk.Contact\"7\n\x15UpdateContactResponse\x12\x1e\n\x07\x63ontact\x18\x01 \x01(\x0b\x32\r.talk.Contact\"#\n\x12GetContactsRequest\x12\r\n\x05UUIDs\x18\x01 \x03(\t\"6\n\x13GetContactsResponse\x12\x1f\n\x08\x63ontacts\x18\x01 \x03(\x0b\x32\r.talk.Contact\"9\n\x14ReportMessageRequest\x12\x11\n\tmessageID\x18\x01 \x01(\x03\x12\x0e\n\x06reason\x18\x02 \x01(\t\"\x17\n\x15ReportMessageResponse\"\'\n\x12HideMessageRequest\x12\x11\n\tmessageID\x18\x01 \x01(\x03\"\x15\n\x13HideMessageResponse\")\n\x14UnsendMessageRequest\x12\x11\n\tmessageID\x18\x01 \x01(\t\"\x17\n\x15UnsendMessageResponse\"4\n\x12\x45\x64itMessageRequest\x12\x1e\n\x07message\x18\x01 \x01(\x0b\x32\r.talk.Message\"5\n\x13\x45\x64itMessageResponse\x12\x1e\n\x07message\x18\x01 \x01(\x0b\x32\r.talk.Message\"4\n\x12SendMessageRequest\x12\x1e\n\x07message\x18\x01 \x01(\x0b\x32\r.talk.Message\"5\n\x13SendMessageResponse\x12\x1e\n\x07message\x18\x01 \x01(\x0b\x32\r.talk.Message\"\xd4\x01\n\x07Message\x12\x0c\n\x04text\x18\x01 \x01(\t\x12\x0e\n\x06\x66romID\x18\x02 \x01(\t\x12\x0c\n\x04toID\x18\x03 \x01(\t\x12\x1c\n\x06toType\x18\x07 \x01(\x0e\x32\x0c.talk.ToType\x12\"\n\x07msgType\x18\x08 \x01(\x0e\x32\x11.talk.MessageType\x12\x11\n\tmessageID\x18\n \x01(\x03\x12\x11\n\treadCount\x18\x0b \x01(\x03\x12\x1d\n\x07readers\x18\x0c \x03(\x0b\x32\x0c.talk.ReaderJ\x04\x08\x04\x10\x05J\x04\x08\x05\x10\x06J\x04\x08\x06\x10\x07J\x04\x08\t\x10\n\"J\n\x06Reader\x12\x0c\n\x04UUID\x18\x01 \x01(\t\x12\r\n\x05index\x18\x02 \x01(\x03\x12\x10\n\x08readTime\x18\x03 \x01(\x03\x12\x11\n\tmessageID\x18\x04 \x01(\x03\"!\n\x11GetContactRequest\x12\x0c\n\x04UUID\x18\x01 \x01(\t\"4\n\x12GetContactResponse\x12\x1e\n\x07\x63ontact\x18\x01 \x01(\x0b\x32\r.talk.Contact\"\x90\x01\n\x07\x43ontact\x12\x0c\n\x04UUID\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x17\n\x0foverWrittenName\x18\x03 \x01(\t\x12\x10\n\x08metaData\x18\x04 \x01(\t\x12\"\n\x06status\x18\x05 \x01(\x0e\x32\x12.talk.FriendStatus\x12\x0e\n\x06tagIds\x18\x08 \x03(\tJ\x04\x08\x06\x10\x07J\x04\x08\x07\x10\x08\"p\n\x03Tag\x12\r\n\x05tagID\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\r\n\x05\x63olor\x18\x04 \x01(\t\x12\x13\n\x0b\x63reatorUUID\x18\x05 \x01(\t\x12\x13\n\x0b\x63reatedTime\x18\x06 \x01(\x03\"\x13\n\x11GetAllTagsRequest\"-\n\x12GetAllTagsResponse\x12\x17\n\x04tags\x18\x01 \x03(\x0b\x32\t.talk.Tag\"*\n\x10\x43reateTagRequest\x12\x16\n\x03tag\x18\x01 \x01(\x0b\x32\t.talk.Tag\"\x13\n\x11\x43reateTagResponse\"!\n\x10\x44\x65leteTagRequest\x12\r\n\x05tagID\x18\x01 \x01(\t\"\x13\n\x11\x44\x65leteTagResponse\"(\n\x14VerifyIDTokenRequest\x12\x10\n\x08jwtToken\x18\x01 \x01(\t\"\x17\n\x15VerifyIDTokenResponse\"\x1b\n\x19InitPrimaryAccountRequest\"\x1c\n\x1aInitPrimaryAccountResponse*2\n\tEventType\x12\x13\n\x0fRECEIVE_MESSAGE\x10\x00\x12\x10\n\x0cSEND_MESSAGE\x10\x01*\x9e\x01\n\nSettingKey\x12\x13\n\x0fPRIVATE_USER_ID\x10\x00\x12#\n\x1f\x41LLOW_SEARCH_BY_PRIVATE_USER_ID\x10\x01\x12\t\n\x05\x45MAIL\x10\x02\x12\x19\n\x15\x41LLOW_SEARCH_BY_EMAIL\x10\x03\x12\x0f\n\x0bUSER_TICKET\x10\x04\x12\x1f\n\x1b\x41LLOW_SEARCH_BY_USER_TICKET\x10\x05*\x1f\n\nProfileKey\x12\x08\n\x04NAME\x10\x00\x12\x07\n\x03\x42IO\x10\x01*:\n\x0bMessageType\x12\x08\n\x04TEXT\x10\x00\x12\t\n\x05IMAGE\x10\x01\x12\t\n\x05VIDEO\x10\x02\x12\x0b\n\x07STICKER\x10\x03*\'\n\x06ToType\x12\x08\n\x04USER\x10\x00\x12\t\n\x05GROUP\x10\x01\x12\x08\n\x04ROOM\x10\x02*>\n\x0c\x46riendStatus\x12\n\n\x06\x66riend\x10\x00\x12\t\n\x05\x62lock\x10\x01\x12\n\n\x06\x64\x65lete\x10\x02\x12\x0b\n\x07nothing\x10\x03\x32\xc2\x11\n\x0bTalkService\x12\x42\n\x0bSendMessage\x12\x18.talk.SendMessageRequest\x1a\x19.talk.SendMessageResponse\x12\x42\n\x0b\x45\x64itMessage\x12\x18.talk.EditMessageRequest\x1a\x19.talk.EditMessageResponse\x12H\n\rUnsendMessage\x12\x1a.talk.UnsendMessageRequest\x1a\x1b.talk.UnsendMessageResponse\x12\x42\n\x0bHideMessage\x12\x18.talk.HideMessageRequest\x1a\x19.talk.HideMessageResponse\x12H\n\rReportMessage\x12\x1a.talk.ReportMessageRequest\x1a\x1b.talk.ReportMessageResponse\x12?\n\nGetContact\x12\x17.talk.GetContactRequest\x1a\x18.talk.GetContactResponse\x12\x42\n\x0bGetContacts\x12\x18.talk.GetContactsRequest\x1a\x19.talk.GetContactsResponse\x12H\n\rUpdateContact\x12\x1a.talk.UpdateContactRequest\x1a\x1b.talk.UpdateContactResponse\x12\x45\n\x0c\x42lockContact\x12\x19.talk.BlockContactRequest\x1a\x1a.talk.BlockContactResponse\x12H\n\rReportContact\x12\x1a.talk.ReportContactRequest\x1a\x1b.talk.ReportContactResponse\x12T\n\x11SendFriendRequest\x12\x1e.talk.SendFriendRequestRequest\x1a\x1f.talk.SendFriendRequestResponse\x12Z\n\x13\x41\x63\x63\x65ptFriendRequest\x12 .talk.AcceptFriendRequestRequest\x1a!.talk.AcceptFriendRequestResponse\x12Z\n\x13RejectFriendRequest\x12 .talk.RejectFriendRequestRequest\x1a!.talk.RejectFriendRequestResponse\x12N\n\x0fGetAllFriendIds\x12\x1c.talk.GetAllFriendIdsRequest\x1a\x1d.talk.GetAllFriendIdsResponse\x12\x63\n\x16GetAllFriendRequestIds\x12#.talk.GetAllFriendRequestIdsRequest\x1a$.talk.GetAllFriendRequestIdsResponse\x12i\n\x18GetALlFriendRequestedIds\x12%.talk.GetALlFriendRequestedIdsRequest\x1a&.talk.GetALlFriendRequestedIdsResponse\x12\x63\n\x16GetFriendRequestStatus\x12#.talk.GetFriendRequestStatusRequest\x1a$.talk.GetFriendRequestStatusResponse\x12Q\n\x10GetAllBlockedIds\x12\x1d.talk.GetAllBlockedIdsRequest\x1a\x1e.talk.GetAllBlockedIdsResponse\x12Q\n\x10\x46indUserByUserID\x12\x1d.talk.FindUserByUserIDRequest\x1a\x1e.talk.FindUserByUserIDResponse\x12Q\n\x10\x46indUserByTicket\x12\x1d.talk.FindUserByTicketRequest\x1a\x1e.talk.FindUserByTicketResponse\x12N\n\x0f\x46indUserByEmail\x12\x1c.talk.FindUserByEmailRequest\x1a\x1d.talk.FindUserByEmailResponse\x12H\n\rUpdateProfile\x12\x1a.talk.UpdateProfileRequest\x1a\x1b.talk.UpdateProfileResponse\x12?\n\nGetProfile\x12\x17.talk.GetProfileRequest\x1a\x18.talk.GetProfileResponse\x12H\n\rUpdateSetting\x12\x1a.talk.UpdateSettingRequest\x1a\x1b.talk.UpdateSettingResponse\x12?\n\nGetSetting\x12\x17.talk.GetSettingRequest\x1a\x18.talk.GetSettingResponse\x12\x44\n\x0b\x46\x65tchEvents\x12\x18.talk.FetchEventsRequest\x1a\x19.talk.FetchEventsResponse0\x01\x12?\n\nGetAllTags\x12\x17.talk.GetAllTagsRequest\x1a\x18.talk.GetAllTagsResponse\x12<\n\tCreateTag\x12\x16.talk.CreateTagRequest\x1a\x17.talk.CreateTagResponse\x12<\n\tDeleteTag\x12\x16.talk.DeleteTagRequest\x1a\x17.talk.DeleteTagResponse2\xb0\x01\n\x0b\x41uthService\x12H\n\rVerifyIDToken\x12\x1a.talk.VerifyIDTokenRequest\x1a\x1b.talk.VerifyIDTokenResponse\x12W\n\x12InitPrimaryAccount\x12\x1f.talk.InitPrimaryAccountRequest\x1a .talk.InitPrimaryAccountResponseB\x0bZ\t.;TalkRPCb\x06proto3'
 )
 
 _EVENTTYPE = _descriptor.EnumDescriptor(
@@ -43,8 +43,8 @@ _EVENTTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4015,
-  serialized_end=4065,
+  serialized_start=4022,
+  serialized_end=4072,
 )
 _sym_db.RegisterEnumDescriptor(_EVENTTYPE)
 
@@ -89,8 +89,8 @@ _SETTINGKEY = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4068,
-  serialized_end=4226,
+  serialized_start=4075,
+  serialized_end=4233,
 )
 _sym_db.RegisterEnumDescriptor(_SETTINGKEY)
 
@@ -115,8 +115,8 @@ _PROFILEKEY = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4228,
-  serialized_end=4259,
+  serialized_start=4235,
+  serialized_end=4266,
 )
 _sym_db.RegisterEnumDescriptor(_PROFILEKEY)
 
@@ -151,8 +151,8 @@ _MESSAGETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4261,
-  serialized_end=4319,
+  serialized_start=4268,
+  serialized_end=4326,
 )
 _sym_db.RegisterEnumDescriptor(_MESSAGETYPE)
 
@@ -182,8 +182,8 @@ _TOTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4321,
-  serialized_end=4360,
+  serialized_start=4328,
+  serialized_end=4367,
 )
 _sym_db.RegisterEnumDescriptor(_TOTYPE)
 
@@ -218,8 +218,8 @@ _FRIENDSTATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4362,
-  serialized_end=4424,
+  serialized_start=4369,
+  serialized_end=4431,
 )
 _sym_db.RegisterEnumDescriptor(_FRIENDSTATUS)
 
@@ -892,7 +892,7 @@ _FINDUSERBYUSERIDREQUEST = _descriptor.Descriptor(
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='userID', full_name='talk.FindUserByUserIDRequest.userID', index=0,
+      name='privateUserID', full_name='talk.FindUserByUserIDRequest.privateUserID', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -911,7 +911,7 @@ _FINDUSERBYUSERIDREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=1139,
-  serialized_end=1180,
+  serialized_end=1187,
 )
 
 
@@ -942,8 +942,8 @@ _FINDUSERBYUSERIDRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1182,
-  serialized_end=1240,
+  serialized_start=1189,
+  serialized_end=1247,
 )
 
 
@@ -967,8 +967,8 @@ _GETALLBLOCKEDIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1242,
-  serialized_end=1267,
+  serialized_start=1249,
+  serialized_end=1274,
 )
 
 
@@ -999,8 +999,8 @@ _GETALLBLOCKEDIDSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1269,
-  serialized_end=1310,
+  serialized_start=1276,
+  serialized_end=1317,
 )
 
 
@@ -1031,8 +1031,8 @@ _GETFRIENDREQUESTSTATUSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1312,
-  serialized_end=1358,
+  serialized_start=1319,
+  serialized_end=1365,
 )
 
 
@@ -1063,8 +1063,8 @@ _GETFRIENDREQUESTSTATUSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1360,
-  serialized_end=1431,
+  serialized_start=1367,
+  serialized_end=1438,
 )
 
 
@@ -1088,8 +1088,8 @@ _GETALLFRIENDREQUESTEDIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1433,
-  serialized_end=1466,
+  serialized_start=1440,
+  serialized_end=1473,
 )
 
 
@@ -1120,8 +1120,8 @@ _GETALLFRIENDREQUESTEDIDSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1468,
-  serialized_end=1541,
+  serialized_start=1475,
+  serialized_end=1548,
 )
 
 
@@ -1145,8 +1145,8 @@ _GETALLFRIENDREQUESTIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1543,
-  serialized_end=1574,
+  serialized_start=1550,
+  serialized_end=1581,
 )
 
 
@@ -1177,8 +1177,8 @@ _GETALLFRIENDREQUESTIDSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1576,
-  serialized_end=1647,
+  serialized_start=1583,
+  serialized_end=1654,
 )
 
 
@@ -1202,8 +1202,8 @@ _GETALLFRIENDIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1649,
-  serialized_end=1673,
+  serialized_start=1656,
+  serialized_end=1680,
 )
 
 
@@ -1234,8 +1234,8 @@ _GETALLFRIENDIDSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1675,
-  serialized_end=1713,
+  serialized_start=1682,
+  serialized_end=1720,
 )
 
 
@@ -1266,8 +1266,8 @@ _REJECTFRIENDREQUESTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1715,
-  serialized_end=1781,
+  serialized_start=1722,
+  serialized_end=1788,
 )
 
 
@@ -1298,8 +1298,8 @@ _REJECTFRIENDREQUESTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1783,
-  serialized_end=1844,
+  serialized_start=1790,
+  serialized_end=1851,
 )
 
 
@@ -1330,8 +1330,8 @@ _ACCEPTFRIENDREQUESTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1846,
-  serialized_end=1912,
+  serialized_start=1853,
+  serialized_end=1919,
 )
 
 
@@ -1362,8 +1362,8 @@ _ACCEPTFRIENDREQUESTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1914,
-  serialized_end=1975,
+  serialized_start=1921,
+  serialized_end=1982,
 )
 
 
@@ -1394,8 +1394,8 @@ _SENDFRIENDREQUESTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1977,
-  serialized_end=2041,
+  serialized_start=1984,
+  serialized_end=2048,
 )
 
 
@@ -1426,8 +1426,8 @@ _SENDFRIENDREQUESTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2043,
-  serialized_end=2102,
+  serialized_start=2050,
+  serialized_end=2109,
 )
 
 
@@ -1500,8 +1500,8 @@ _FRIENDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2105,
-  serialized_end=2259,
+  serialized_start=2112,
+  serialized_end=2266,
 )
 
 
@@ -1546,8 +1546,8 @@ _REPORTCONTACTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2261,
-  serialized_end=2331,
+  serialized_start=2268,
+  serialized_end=2338,
 )
 
 
@@ -1571,8 +1571,8 @@ _REPORTCONTACTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2333,
-  serialized_end=2356,
+  serialized_start=2340,
+  serialized_end=2363,
 )
 
 
@@ -1603,8 +1603,8 @@ _BLOCKCONTACTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2358,
-  serialized_end=2393,
+  serialized_start=2365,
+  serialized_end=2400,
 )
 
 
@@ -1628,8 +1628,8 @@ _BLOCKCONTACTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2395,
-  serialized_end=2417,
+  serialized_start=2402,
+  serialized_end=2424,
 )
 
 
@@ -1660,8 +1660,8 @@ _UPDATECONTACTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2419,
-  serialized_end=2473,
+  serialized_start=2426,
+  serialized_end=2480,
 )
 
 
@@ -1692,8 +1692,8 @@ _UPDATECONTACTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2475,
-  serialized_end=2530,
+  serialized_start=2482,
+  serialized_end=2537,
 )
 
 
@@ -1724,8 +1724,8 @@ _GETCONTACTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2532,
-  serialized_end=2567,
+  serialized_start=2539,
+  serialized_end=2574,
 )
 
 
@@ -1756,8 +1756,8 @@ _GETCONTACTSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2569,
-  serialized_end=2623,
+  serialized_start=2576,
+  serialized_end=2630,
 )
 
 
@@ -1795,8 +1795,8 @@ _REPORTMESSAGEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2625,
-  serialized_end=2682,
+  serialized_start=2632,
+  serialized_end=2689,
 )
 
 
@@ -1820,8 +1820,8 @@ _REPORTMESSAGERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2684,
-  serialized_end=2707,
+  serialized_start=2691,
+  serialized_end=2714,
 )
 
 
@@ -1852,8 +1852,8 @@ _HIDEMESSAGEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2709,
-  serialized_end=2748,
+  serialized_start=2716,
+  serialized_end=2755,
 )
 
 
@@ -1877,8 +1877,8 @@ _HIDEMESSAGERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2750,
-  serialized_end=2771,
+  serialized_start=2757,
+  serialized_end=2778,
 )
 
 
@@ -1909,8 +1909,8 @@ _UNSENDMESSAGEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2773,
-  serialized_end=2814,
+  serialized_start=2780,
+  serialized_end=2821,
 )
 
 
@@ -1934,8 +1934,8 @@ _UNSENDMESSAGERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2816,
-  serialized_end=2839,
+  serialized_start=2823,
+  serialized_end=2846,
 )
 
 
@@ -1966,8 +1966,8 @@ _EDITMESSAGEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2841,
-  serialized_end=2893,
+  serialized_start=2848,
+  serialized_end=2900,
 )
 
 
@@ -1998,8 +1998,8 @@ _EDITMESSAGERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2895,
-  serialized_end=2948,
+  serialized_start=2902,
+  serialized_end=2955,
 )
 
 
@@ -2030,8 +2030,8 @@ _SENDMESSAGEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2950,
-  serialized_end=3002,
+  serialized_start=2957,
+  serialized_end=3009,
 )
 
 
@@ -2062,8 +2062,8 @@ _SENDMESSAGERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3004,
-  serialized_end=3057,
+  serialized_start=3011,
+  serialized_end=3064,
 )
 
 
@@ -2143,8 +2143,8 @@ _MESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3060,
-  serialized_end=3272,
+  serialized_start=3067,
+  serialized_end=3279,
 )
 
 
@@ -2196,8 +2196,8 @@ _READER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3274,
-  serialized_end=3348,
+  serialized_start=3281,
+  serialized_end=3355,
 )
 
 
@@ -2228,8 +2228,8 @@ _GETCONTACTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3350,
-  serialized_end=3383,
+  serialized_start=3357,
+  serialized_end=3390,
 )
 
 
@@ -2260,8 +2260,8 @@ _GETCONTACTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3385,
-  serialized_end=3437,
+  serialized_start=3392,
+  serialized_end=3444,
 )
 
 
@@ -2327,8 +2327,8 @@ _CONTACT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3440,
-  serialized_end=3584,
+  serialized_start=3447,
+  serialized_end=3591,
 )
 
 
@@ -2394,8 +2394,8 @@ _TAG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3586,
-  serialized_end=3698,
+  serialized_start=3593,
+  serialized_end=3705,
 )
 
 
@@ -2419,8 +2419,8 @@ _GETALLTAGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3700,
-  serialized_end=3719,
+  serialized_start=3707,
+  serialized_end=3726,
 )
 
 
@@ -2451,8 +2451,8 @@ _GETALLTAGSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3721,
-  serialized_end=3766,
+  serialized_start=3728,
+  serialized_end=3773,
 )
 
 
@@ -2483,8 +2483,8 @@ _CREATETAGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3768,
-  serialized_end=3810,
+  serialized_start=3775,
+  serialized_end=3817,
 )
 
 
@@ -2508,8 +2508,8 @@ _CREATETAGRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3812,
-  serialized_end=3831,
+  serialized_start=3819,
+  serialized_end=3838,
 )
 
 
@@ -2540,8 +2540,8 @@ _DELETETAGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3833,
-  serialized_end=3866,
+  serialized_start=3840,
+  serialized_end=3873,
 )
 
 
@@ -2565,8 +2565,8 @@ _DELETETAGRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3868,
-  serialized_end=3887,
+  serialized_start=3875,
+  serialized_end=3894,
 )
 
 
@@ -2597,8 +2597,8 @@ _VERIFYIDTOKENREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3889,
-  serialized_end=3929,
+  serialized_start=3896,
+  serialized_end=3936,
 )
 
 
@@ -2622,8 +2622,8 @@ _VERIFYIDTOKENRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3931,
-  serialized_end=3954,
+  serialized_start=3938,
+  serialized_end=3961,
 )
 
 
@@ -2647,8 +2647,8 @@ _INITPRIMARYACCOUNTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3956,
-  serialized_end=3983,
+  serialized_start=3963,
+  serialized_end=3990,
 )
 
 
@@ -2672,8 +2672,8 @@ _INITPRIMARYACCOUNTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3985,
-  serialized_end=4013,
+  serialized_start=3992,
+  serialized_end=4020,
 )
 
 _FETCHEVENTSRESPONSE.fields_by_name['events'].message_type = _EVENT
@@ -3290,8 +3290,8 @@ _TALKSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=4427,
-  serialized_end=6669,
+  serialized_start=4434,
+  serialized_end=6676,
   methods=[
   _descriptor.MethodDescriptor(
     name='SendMessage',
@@ -3596,8 +3596,8 @@ _AUTHSERVICE = _descriptor.ServiceDescriptor(
   index=1,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=6672,
-  serialized_end=6848,
+  serialized_start=6679,
+  serialized_end=6855,
   methods=[
   _descriptor.MethodDescriptor(
     name='VerifyIDToken',

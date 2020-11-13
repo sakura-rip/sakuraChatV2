@@ -16,3 +16,8 @@ func mapToSlice(targetMap map[string]int64) []string {
 	}
 	return slice
 }
+
+func isStrInMap(baseMap map[string]int64, target string) bool {
+	_, ok := baseMap[target]
+	return ok
+}

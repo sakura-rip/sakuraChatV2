@@ -6,14 +6,14 @@ type User struct {
 	Profile Profile `bson:"profile"`
 	Setting Setting `bson:"setting"`
 
-	JoinedGroupIds  []string        `bson:"JoinedGroupIds"`
-	InvitedGroupIds []string        `bson:"InvitedGroupIds"`
-	FriendRequests  []FriendRequest `bson:"FriendRequests"`
-	FriendIds       []string        `bson:"FriendIds"`
-	BlockedIds      []string        `bson:"BlockedIds"`
-	DeletedIds      []string        `bson:"DeletedIds"`
-	Contacts        []Contact       `bson:"contacts"`
-	Tags            []Tag           `bson:"tags"`
+	JoinedGroupIds  map[string]int64         `bson:"JoinedGroupIds"`  //map[uuid]timestamp
+	InvitedGroupIds map[string]int64         `bson:"InvitedGroupIds"` //map[guid]timestamp
+	FriendRequests  map[string]FriendRequest `bson:"FriendRequests"`  //map[uuid]FriendReq
+	FriendIds       map[string]int64         `bson:"FriendIds"`       //map[uuid]timestamp
+	BlockedIds      map[string]int64         `bson:"BlockedIds"`      //map[uuid]timestamp
+	DeletedIds      map[string]int64         `bson:"DeletedIds"`      //map[uuid]timestamp
+	Contacts        map[string]Contact       `bson:"contacts"`        //map[uuid]Contact
+	Tags            map[string]Tag           `bson:"tags"`            //map[tagID]Tag
 }
 
 type Profile struct {
@@ -44,12 +44,11 @@ type FriendRequest struct {
 	IsRejected           bool   `bson:"omitempty"`
 	AcceptedOrRejectedAt int64  `bson:"omitempty"`
 }
-
 type Contact struct {
-	UUID            string   `bson:"uuid`
-	OverWrittenName string   `bson:"owname"`
-	Status          int64    `bson:"status"`
-	TagIds          []string `bson:"tags"`
+	UUID            string           `bson:"uuid`
+	OverWrittenName string           `bson:"owname"`
+	Status          int64            `bson:"status"`
+	TagIds          map[string]int64 `bson:"tags"`
 }
 
 type Tag struct {

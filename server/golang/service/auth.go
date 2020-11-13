@@ -47,12 +47,14 @@ func (cl AuthHandler) InitPrimaryAccount(ctx context.Context, in *TalkRPC.InitPr
 				Name: "Kimura Sakura",
 			},
 			Setting:         database.Setting{},
-			JoinedGroupIds:  []string{},
-			InvitedGroupIds: []string{},
-			FriendRequests:  []database.FriendRequest{},
-			FriendIds:       []string{},
-			BlockedIds:      []string{},
-			DeletedIds:      []string{},
+			JoinedGroupIds:  map[string]int64{},
+			InvitedGroupIds: map[string]int64{},
+			FriendRequests:  map[string]database.FriendRequest{},
+			FriendIds:       map[string]int64{},
+			BlockedIds:      map[string]int64{},
+			DeletedIds:      map[string]int64{},
+			Contacts:        map[string]database.Contact{},
+			Tags:            map[string]database.Tag{},
 		}
 		_, err := userCol.InsertOne(ctx, docu)
 		if err != nil {

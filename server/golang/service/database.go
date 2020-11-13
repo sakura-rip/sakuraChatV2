@@ -57,7 +57,7 @@ func findContactFromDB(uuid, targetUUID string) (*database.Contact, error) {
 		UUID:            targetUUID,
 		OverWrittenName: profile.Name,
 		Status:          3,
-		TagIds:          []string{},
+		TagIds:          map[string]int64{},
 	}
 	rs := userCol.FindOne(
 		ctx,
@@ -69,9 +69,9 @@ func findContactFromDB(uuid, targetUUID string) (*database.Contact, error) {
 		return nil, status.New(codes.NotFound, "user not found").Err()
 	}
 	if len(user.Contacts) != 0 {
-		contact.OverWrittenName = user.Contacts[0].OverWrittenName
-		contact.Status = user.Contacts[0].Status
-		contact.TagIds = user.Contacts[0].TagIds
+		contact.OverWrittenName = user.Contacts[targetUUID].OverWrittenName
+		contact.Status = user.Contacts[targetUUID].Status
+		contact.TagIds = user.Contacts[targetUUID].TagIds
 	}
 	return &contact, nil
 }
@@ -124,17 +124,17 @@ func findRPCContactFromDB(baseUUID, targetUUID string) (*TalkRPC.Contact, error)
 	}
 	rs := userCol.FindOne(
 		ctx,
-		bson.D{{"_id", baseUUID}},
-		options.FindOne().SetProjection(bson.M{"contacts": bson.M{"$elemMatch": bson.M{"uuid": targetUUID}}}),
+		bson.D{{"_id", baseUUID}, {"contacts.", targetUUID}},
+		options.FindOne().SetProjection(bson.D{{"contacts", 1}}),
 	)
 	var user *database.User
 	if rs.Decode(&user) != nil {
 		return nil, status.New(codes.NotFound, "user not found").Err()
 	}
 	if len(user.Contacts) != 0 {
-		contact.OverWrittenName = user.Contacts[0].OverWrittenName
-		contact.TagIds = user.Contacts[0].TagIds
-		switch user.Contacts[0].Status {
+		contact.OverWrittenName = user.Contacts[targetUUID].OverWrittenName
+		contact.TagIds = mapToSlice(user.Contacts[targetUUID].TagIds)
+		switch user.Contacts[targetUUID].Status {
 		case 0:
 			contact.Status = TalkRPC.FriendStatus_friend
 		case 1:

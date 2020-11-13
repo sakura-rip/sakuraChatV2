@@ -111,7 +111,7 @@ message FindUserByTicketResponse {
 
 
 message FindUserByUserIDRequest {
-    string userID = 1;
+    string privateUserID = 1;
 }
 message FindUserByUserIDResponse {
     Contact contact = 1;

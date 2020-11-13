@@ -16,3 +16,7 @@ func (cl TalkHandler) CreateTag(ctx context.Context, in *TalkRPC.CreateTagReques
 func (cl TalkHandler) DeleteTag(ctx context.Context, in *TalkRPC.DeleteTagRequest) (*TalkRPC.DeleteTagResponse, error) {
 
 }
+
+func (cl TalkHandler) AddTagToContact(context.Context, *TalkRPC.AddTagToContactRequest) (*TalkRPC.AddTagToContactResponse, error) {
+
+}

@@ -336,6 +336,13 @@ message DeleteTagRequest {
 message DeleteTagResponse{
 }
 
+message AddTagToContactRequest {
+    string targetUUID = 1;
+    string TagID = 2;
+}
+message AddTagToContactResponse {
+
+}
 
 service TalkService {
 
@@ -375,6 +382,7 @@ service TalkService {
     rpc GetAllTags (GetAllTagsRequest) returns (GetAllTagsResponse);
     rpc CreateTag (CreateTagRequest) returns (CreateTagResponse);
     rpc DeleteTag (DeleteTagRequest) returns (DeleteTagResponse);
+    rpc AddTagToContact (AddTagToContactRequest) returns (AddTagToContactResponse);
 }
 
 

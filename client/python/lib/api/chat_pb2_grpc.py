@@ -159,6 +159,11 @@ class TalkServiceStub(object):
                 request_serializer=chat__pb2.DeleteTagRequest.SerializeToString,
                 response_deserializer=chat__pb2.DeleteTagResponse.FromString,
                 )
+        self.AddTagToContact = channel.unary_unary(
+                '/talk.TalkService/AddTagToContact',
+                request_serializer=chat__pb2.AddTagToContactRequest.SerializeToString,
+                response_deserializer=chat__pb2.AddTagToContactResponse.FromString,
+                )
 
 
 class TalkServiceServicer(object):
@@ -338,6 +343,12 @@ class TalkServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def AddTagToContact(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_TalkServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -485,6 +496,11 @@ def add_TalkServiceServicer_to_server(servicer, server):
                     servicer.DeleteTag,
                     request_deserializer=chat__pb2.DeleteTagRequest.FromString,
                     response_serializer=chat__pb2.DeleteTagResponse.SerializeToString,
+            ),
+            'AddTagToContact': grpc.unary_unary_rpc_method_handler(
+                    servicer.AddTagToContact,
+                    request_deserializer=chat__pb2.AddTagToContactRequest.FromString,
+                    response_serializer=chat__pb2.AddTagToContactResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -986,6 +1002,23 @@ class TalkService(object):
         return grpc.experimental.unary_unary(request, target, '/talk.TalkService/DeleteTag',
             chat__pb2.DeleteTagRequest.SerializeToString,
             chat__pb2.DeleteTagResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def AddTagToContact(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/talk.TalkService/AddTagToContact',
+            chat__pb2.AddTagToContactRequest.SerializeToString,
+            chat__pb2.AddTagToContactResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

@@ -11,10 +11,10 @@ import (
 
 // User b
 type User struct {
-	ID       string            `bson:"_id"`
-	Contacts []Contact         `bson:"contacts"`
-	BIDs     []string          `bson:"BIDs"`
-	MapTest  map[string]string `bson:"MapTest"`
+	ID       string             `bson:"_id"`
+	Contacts []Contact          `bson:"contacts"`
+	BIDs     []string           `bson:"BIDs"`
+	MapTest  map[string]Contact `bson:"MapTest"`
 }
 
 // Contact a
@@ -39,7 +39,7 @@ func maptest() {
 		ID:       "ID2",
 		Contacts: []Contact{{Name: "name2", UUID: "uuid2"}, {Name: "name3", UUID: "uuid3"}},
 		BIDs:     []string{"aaa", "aaa", "bbbb"},
-		MapTest:  map[string]string{"test": "dayo"},
+		MapTest:  map[string]Contact{"testuuid": Contact{Name: "name", UUID: "testuuid"}},
 	}
 	col.InsertOne(context.Background(), doc)
 }
@@ -80,6 +80,18 @@ func pushArray() {
 	}
 	fmt.Println(rs)
 }
+func findMap(uuid string) {
+	rs := col.FindOne(
+		context.Background(),
+		bson.D{{"_id", "ID2"}},
+		options.FindOne().SetProjection(bson.D{{"MapTest", 1}}),
+	)
+	var usr *User
+	if err := rs.Decode(&usr); err != nil {
+		panic(err)
+	}
+	fmt.Println(usr)
+}
 
 func main() {
 	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb://admin:password123@localhost:27017"))
@@ -94,5 +106,6 @@ func main() {
 	// insert()
 	// find()
 	// pushArray()
-	maptest()
+	// maptest()
+	findMap("testuuid")
 }

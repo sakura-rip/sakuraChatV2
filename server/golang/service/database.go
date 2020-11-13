@@ -62,16 +62,17 @@ func findContactFromDB(uuid, targetUUID string) (*database.Contact, error) {
 	rs := userCol.FindOne(
 		ctx,
 		bson.D{{"_id", uuid}},
-		options.FindOne().SetProjection(bson.M{"contacts": bson.M{"$elemMatch": bson.M{"uuid": targetUUID}}}),
+		options.FindOne().SetProjection(bson.D{{"contacts", 1}}),
 	)
 	var user *database.User
 	if rs.Decode(&user) != nil {
 		return nil, status.New(codes.NotFound, "user not found").Err()
 	}
-	if len(user.Contacts) != 0 {
-		contact.OverWrittenName = user.Contacts[targetUUID].OverWrittenName
-		contact.Status = user.Contacts[targetUUID].Status
-		contact.TagIds = user.Contacts[targetUUID].TagIds
+	value, ok := user.Contacts[targetUUID]
+	if ok == true {
+		contact.OverWrittenName = value.OverWrittenName
+		contact.Status = value.Status
+		contact.TagIds = value.TagIds
 	}
 	return &contact, nil
 }

@@ -21,7 +21,7 @@ func init() {
 	userCol = db.Session.Database("sakuraChat").Collection("users")
 }
 
-func runServer() {
+func RunServer() {
 	listen, err := net.Listen("tcp", ":8806")
 	if err != nil {
 		panic(err)
@@ -31,5 +31,7 @@ func runServer() {
 	authService := AuthHandler{}
 	TalkRPC.RegisterTalkServiceServer(server, talkService)
 	TalkRPC.RegisterAuthServiceServer(server, authService)
-	server.Serve(listen)
+	if err := server.Serve(listen); err != nil {
+		panic(err)
+	}
 }

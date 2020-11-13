@@ -28,6 +28,7 @@ func insert() {
 	doc := User{
 		ID:       "ID1",
 		Contacts: []Contact{{Name: "name1", UUID: "uuid1"}, {Name: "name2", UUID: "uuid2"}},
+		BIDs:     []string{"aaa", "aaa", "bbbb"},
 	}
 	col.InsertOne(context.Background(), doc)
 }
@@ -78,7 +79,8 @@ func main() {
 		panic(err)
 	}
 	col = client.Database("sakura").Collection("sakurachatTest")
-	findArray()
+	// findArray()
 	// insert()
 	// find()
+	pushArray()
 }

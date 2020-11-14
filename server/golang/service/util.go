@@ -17,6 +17,14 @@ func mapToSlice(targetMap map[string]int64) []string {
 	return slice
 }
 
+func sliceToMap(targetSlice []string) map[string]int64 {
+	var newMap = map[string]int64{}
+	for idx, val := range targetSlice {
+		newMap[val] = int64(idx)
+	}
+	return newMap
+}
+
 func isStrInMap(baseMap map[string]int64, target string) bool {
 	_, ok := baseMap[target]
 	return ok

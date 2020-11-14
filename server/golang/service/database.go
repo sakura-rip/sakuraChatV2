@@ -134,20 +134,21 @@ func findRPCContactFromDB(baseUUID, targetUUID string) (*TalkRPC.Contact, error)
 	if rs.Decode(&user) != nil {
 		return nil, status.New(codes.NotFound, "user not found").Err()
 	}
-	if len(user.Contacts) != 0 {
-		if _, ok := user.Contacts[targetUUID]; ok == true {
-			contact.OverWrittenName = user.Contacts[targetUUID].OverWrittenName
-			contact.TagIds = mapToSlice(user.Contacts[targetUUID].TagIds)
-			switch user.Contacts[targetUUID].Status {
-			case 0:
-				contact.Status = TalkRPC.FriendStatus_friend
-			case 1:
-				contact.Status = TalkRPC.FriendStatus_block
-			case 2:
-				contact.Status = TalkRPC.FriendStatus_delete
-			case 3:
-				contact.Status = TalkRPC.FriendStatus_nothing
-			}
+	if len(user.Contacts) == 0 {
+		return nil, err
+	}
+	if _, ok := user.Contacts[targetUUID]; ok == true {
+		contact.OverWrittenName = user.Contacts[targetUUID].OverWrittenName
+		contact.TagIds = mapToSlice(user.Contacts[targetUUID].TagIds)
+		switch user.Contacts[targetUUID].Status {
+		case 0:
+			contact.Status = TalkRPC.FriendStatus_friend
+		case 1:
+			contact.Status = TalkRPC.FriendStatus_block
+		case 2:
+			contact.Status = TalkRPC.FriendStatus_delete
+		case 3:
+			contact.Status = TalkRPC.FriendStatus_nothing
 		}
 	}
 	return &contact, nil

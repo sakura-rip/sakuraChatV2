@@ -99,7 +99,17 @@ func findMap(uuid string) {
 	}
 	fmt.Println(usr)
 }
-
+func deleteMap() {
+	rs, err := col.UpdateOne(
+		context.Background(),
+		bson.M{"_id": "ID2"},
+		bson.M{"$unset": bson.M{"MapTest.tefasdfad": ""}},
+	)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(rs)
+}
 func main() {
 	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb://admin:password123@localhost:27017"))
 	if err != nil {
@@ -115,6 +125,7 @@ func main() {
 	// pushArray()
 	// maptest()
 	// maptest()
-	pushArrays()
+	// pushArrays()
+	deleteMap()
 	// findMap("testuuid")
 }

@@ -52,11 +52,14 @@ func (cl TalkHandler) BlockContact(ctx context.Context, in *TalkRPC.BlockContact
 	}
 	switch contact.Status {
 	case TalkRPC.FriendStatus_friend:
-		_, _ := userCol.UpdateOne(
+		_, err := userCol.UpdateOne(
 			ctx,
 			bson.M{"_id": uuid},
-			"", //https://docs.mongodb.com/manual/reference/operator/update/pull/
+			bson.M{"&pull": bson.M{"FriendIds": in.UUID}}, //https://docs.mongodb.com/manual/reference/operator/update/pull/
 		)
+		if err != nil {
+			return nil, status.New(codes.Internal, "db error").Err()
+		}
 	case TalkRPC.FriendStatus_delete:
 	case TalkRPC.FriendStatus_block:
 	case TalkRPC.FriendStatus_nothing:

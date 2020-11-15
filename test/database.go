@@ -15,6 +15,7 @@ type User struct {
 	Contacts []Contact          `bson:"contacts"`
 	BIDs     []string           `bson:"BIDs"`
 	MapTest  map[string]Contact `bson:"MapTest"`
+	MapTest2 map[string]int64   `bson:"MapTest2"`
 }
 
 // Contact a
@@ -40,6 +41,16 @@ func maptest() {
 		Contacts: []Contact{{Name: "name2", UUID: "uuid2"}, {Name: "name3", UUID: "uuid3"}},
 		BIDs:     []string{"aaa", "aaa", "bbbb"},
 		MapTest:  map[string]Contact{"testuuid": Contact{Name: "name", UUID: "testuuid"}},
+	}
+	col.InsertOne(context.Background(), doc)
+}
+func maptest2() {
+	doc := User{
+		ID:       "ID2",
+		Contacts: []Contact{{Name: "name2", UUID: "uuid2"}, {Name: "name3", UUID: "uuid3"}},
+		BIDs:     []string{"aaa", "aaa", "bbbb"},
+		MapTest:  map[string]Contact{"testuuid": Contact{Name: "name", UUID: "testuuid"}},
+		MapTest2: map[string]int64{"aaa": 64},
 	}
 	col.InsertOne(context.Background(), doc)
 }
@@ -126,6 +137,7 @@ func main() {
 	// maptest()
 	// maptest()
 	// pushArrays()
-	deleteMap()
+	// deleteMap()
+	maptest2()
 	// findMap("testuuid")
 }

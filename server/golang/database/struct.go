@@ -6,14 +6,14 @@ type User struct {
 	Profile Profile `bson:"profile"`
 	Setting Setting `bson:"setting"`
 
-	JoinedGroupIds  []string                 `bson:"JoinedGroupIds"`  //map[uuid]timestamp
-	InvitedGroupIds []string                 `bson:"InvitedGroupIds"` //map[guid]timestamp
-	FriendRequests  map[string]FriendRequest `bson:"FriendRequests"`  //map[uuid]FriendReq
-	FriendIds       []string                 `bson:"FriendIds"`       //map[uuid]timestamp
-	BlockedIds      []string                 `bson:"BlockedIds"`      //map[uuid]timestamp
-	DeletedIds      []string                 `bson:"DeletedIds"`      //map[uuid]timestamp
-	Contacts        map[string]Contact       `bson:"contacts"`        //map[uuid]Contact
-	Tags            map[string]Tag           `bson:"tags"`            //map[tagID]Tag
+	JoinedGroupIds  []string                 `bson:"JoinedGroupIds"`
+	InvitedGroupIds []string                 `bson:"InvitedGroupIds"`
+	FriendRequests  map[string]FriendRequest `bson:"FriendRequests"` //map[uuid]FriendReq
+	FriendIds       []string                 `bson:"FriendIds"`
+	BlockedIds      []string                 `bson:"BlockedIds"`
+	DeletedIds      []string                 `bson:"DeletedIds"`
+	Contacts        map[string]Contact       `bson:"contacts"` //map[uuid]Contact
+	Tags            map[string]Tag           `bson:"tags"`     //map[tagID]Tag
 }
 
 type Profile struct {

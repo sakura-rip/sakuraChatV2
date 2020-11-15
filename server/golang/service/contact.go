@@ -65,7 +65,7 @@ func (cl TalkHandler) BlockContact(ctx context.Context, in *TalkRPC.BlockContact
 		fmt.Sprintf("contacts.%d", in.UUID): database.Contact{
 			UUID:            in.UUID,
 			OverWrittenName: contact.OverWrittenName,
-			Status:          2,
+			Status:          2, //block
 			TagIds:          contact.TagIds,
 		}},
 	}

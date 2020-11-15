@@ -57,7 +57,7 @@ func findContactFromDB(uuid, targetUUID string) (*database.Contact, error) {
 		UUID:            targetUUID,
 		OverWrittenName: profile.Name,
 		Status:          3,
-		TagIds:          map[string]int64{},
+		TagIds:          []string{},
 	}
 	rs := userCol.FindOne(
 		ctx,
@@ -139,7 +139,7 @@ func findRPCContactFromDB(baseUUID, targetUUID string) (*TalkRPC.Contact, error)
 	}
 	if _, ok := user.Contacts[targetUUID]; ok == true {
 		contact.OverWrittenName = user.Contacts[targetUUID].OverWrittenName
-		contact.TagIds = mapToSlice(user.Contacts[targetUUID].TagIds)
+		contact.TagIds = user.Contacts[targetUUID].TagIds
 		switch user.Contacts[targetUUID].Status {
 		case 0:
 			contact.Status = TalkRPC.FriendStatus_friend

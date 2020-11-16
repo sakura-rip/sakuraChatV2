@@ -61,7 +61,9 @@ func (cl TalkHandler) BlockContact(ctx context.Context, in *TalkRPC.BlockContact
 			return nil, status.New(codes.Internal, "db error").Err()
 		}
 	case TalkRPC.FriendStatus_delete:
+		return &TalkRPC.BlockContactResponse{}, nil
 	case TalkRPC.FriendStatus_block:
+		return &TalkRPC.BlockContactResponse{}, nil
 	case TalkRPC.FriendStatus_nothing:
 	}
 	updateAttr := bson.M{"$set": bson.M{

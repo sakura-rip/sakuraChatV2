@@ -38,7 +38,10 @@ func (cl TalkHandler) GetContacts(ctx context.Context, in *TalkRPC.GetContactsRe
 	return response, nil
 }
 func (cl TalkHandler) UpdateContact(ctx context.Context, in *TalkRPC.UpdateContactRequest) (*TalkRPC.UpdateContactResponse, error) {
-
+	uuid, ok, _ := VerifyTokenAndGetUUID(ctx)
+	if ok == false {
+		return nil, status.New(codes.Unauthenticated, "Invalid Token").Err()
+	}
 }
 
 func (cl TalkHandler) BlockContact(ctx context.Context, in *TalkRPC.BlockContactRequest) (*TalkRPC.BlockContactResponse, error) {

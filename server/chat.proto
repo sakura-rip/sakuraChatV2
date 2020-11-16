@@ -200,7 +200,11 @@ message BlockContactResponse{}
 
 
 message UpdateContactRequest {
-    Contact contact = 1;
+    repeated ContactKey key = 1;
+    Contact contact = 2;
+}
+enum ContactKey {
+    OVER_WRITTEN_NAME = 0;
 }
 message UpdateContactResponse {
     Contact contact = 1;

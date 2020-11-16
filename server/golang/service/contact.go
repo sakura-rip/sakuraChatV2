@@ -64,7 +64,6 @@ func (cl TalkHandler) BlockContact(ctx context.Context, in *TalkRPC.BlockContact
 		return &TalkRPC.BlockContactResponse{}, nil
 	case TalkRPC.FriendStatus_block:
 		return &TalkRPC.BlockContactResponse{}, nil
-	case TalkRPC.FriendStatus_nothing:
 	}
 	updateAttr := bson.M{"$set": bson.M{
 		fmt.Sprintf("contacts.%d", in.UUID): database.Contact{

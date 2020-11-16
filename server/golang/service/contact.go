@@ -80,6 +80,7 @@ func (cl TalkHandler) BlockContact(ctx context.Context, in *TalkRPC.BlockContact
 	); err != nil {
 		return nil, status.New(codes.NotFound, "no contact found").Err()
 	}
+	return &TalkRPC.BlockContactResponse{}, nil
 }
 
 func (cl TalkHandler) ReportContact(ctx context.Context, in *TalkRPC.ReportContactRequest) (*TalkRPC.ReportContactResponse, error) {

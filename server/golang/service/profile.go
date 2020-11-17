@@ -17,10 +17,10 @@ func (cl TalkHandler) UpdateProfile(ctx context.Context, in *TalkRPC.UpdateProfi
 	for _, key := range in.Keys {
 		switch key {
 		case TalkRPC.ProfileKey_NAME:
-			attToUpdate = append(attToUpdate, bson.E{Key: "name", Value: in.Profile.Name})
+			attToUpdate = append(attToUpdate, bson.E{Key: "profile.name", Value: in.Profile.Name})
 			fallthrough
 		case TalkRPC.ProfileKey_BIO:
-			attToUpdate = append(attToUpdate, bson.E{Key: "bio", Value: in.Profile.Bio})
+			attToUpdate = append(attToUpdate, bson.E{Key: "profile.bio", Value: in.Profile.Bio})
 		}
 	}
 	_, dberr := userCol.UpdateOne(

@@ -207,7 +207,6 @@ enum ContactKey {
     OVER_WRITTEN_NAME = 0;
 }
 message UpdateContactResponse {
-    Contact contact = 1;
 }
 
 

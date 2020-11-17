@@ -106,4 +106,6 @@ func (cl TalkHandler) BlockContact(ctx context.Context, in *TalkRPC.BlockContact
 }
 
 func (cl TalkHandler) ReportContact(ctx context.Context, in *TalkRPC.ReportContactRequest) (*TalkRPC.ReportContactResponse, error) {
+	//通報、意味ないんです
+	return &TalkRPC.ReportContactResponse{}, nil
 }

@@ -42,6 +42,7 @@ func (cl TalkHandler) UpdateContact(ctx context.Context, in *TalkRPC.UpdateConta
 	if ok == false {
 		return nil, status.New(codes.Unauthenticated, "Invalid Token").Err()
 	}
+	//TODO: Contactが存在するか確認
 	var attToUpdate []bson.E
 	for _, key := range in.Key {
 		switch key {

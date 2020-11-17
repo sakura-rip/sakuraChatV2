@@ -42,6 +42,24 @@ func (cl TalkHandler) UpdateContact(ctx context.Context, in *TalkRPC.UpdateConta
 	if ok == false {
 		return nil, status.New(codes.Unauthenticated, "Invalid Token").Err()
 	}
+	var attToUpdate []bson.E
+	for _, key := range in.Key {
+		switch key {
+		case TalkRPC.ContactKey_OVER_WRITTEN_NAME:
+			attToUpdate = append(attToUpdate, bson.E{"contacts." + in.Contact.UUID + ".owname", in.Contact.OverWrittenName})
+		}
+	}
+	_, dberr := userCol.UpdateOne(
+		ctx,
+		bson.M{"_id": uuid},
+		bson.D{
+			{"$set", attToUpdate},
+		},
+	)
+	if dberr != nil {
+		return nil, status.New(codes.Internal, "db error").Err()
+	}
+	return &TalkRPC.UpdateContactResponse{}, nil
 }
 
 func (cl TalkHandler) BlockContact(ctx context.Context, in *TalkRPC.BlockContactRequest) (*TalkRPC.BlockContactResponse, error) {

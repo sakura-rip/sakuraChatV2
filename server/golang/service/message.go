@@ -18,5 +18,5 @@ func (cl TalkHandler) HideMessage(ctx context.Context, in *TalkRPC.HideMessageRe
 
 }
 func (cl TalkHandler) ReportMessage(ctx context.Context, in *TalkRPC.ReportMessageRequest) (*TalkRPC.ReportMessageResponse, error) {
-
+	return &TalkRPC.ReportMessageResponse{}, nil
 }

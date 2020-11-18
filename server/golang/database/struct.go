@@ -36,11 +36,11 @@ type Setting struct {
 }
 
 type FriendRequest struct {
-	FromID               string `bson:"omitempty"`
-	ToID                 string `bson:"omitempty"`
-	CreatedTime          int64  `bson:"omitempty"`
+	FromID               string `bson:"fID"`
+	ToID                 string `bson:"tID"`
+	CreatedTime          int64  `bson:"CTime"`
 	Message              string `bson:"message"`
-	AcceptedOrRejectedAt int64  `bson:"omitempty"`
+	AcceptedOrRejectedAt int64  `bson:"aOrRAT"`
 }
 type Contact struct {
 	UUID            string   `bson:"uuid"`

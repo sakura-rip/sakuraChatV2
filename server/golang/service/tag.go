@@ -54,9 +54,18 @@ func (cl TalkHandler) DeleteTag(ctx context.Context, in *TalkRPC.DeleteTagReques
 	return &TalkRPC.DeleteTagResponse{}, nil
 }
 
-func (cl TalkHandler) AddTagToContact(context.Context, *TalkRPC.AddTagToContactRequest) (*TalkRPC.AddTagToContactResponse, error) {
+func (cl TalkHandler) AddTagToContact(ctx context.Context, in *TalkRPC.AddTagToContactRequest) (*TalkRPC.AddTagToContactResponse, error) {
 	uuid, ok, _ := VerifyTokenAndGetUUID(ctx)
 	if ok == false {
 		return nil, status.New(codes.Unauthenticated, "Invalid Token").Err()
 	}
+	_, dbErr := userCol.UpdateOne(
+		ctx,
+		bson.M{"_id": uuid},
+		bson.M{"$push": bson.M{"contacts." + in.TargetUUID + ".tags": in.TagID}}
+	)
+	if dbErr != nil {
+		return nil, status.New(codes.Internal, "db error").Err()
+	}
+	return &TalkRPC.AddTagToContactResponse{}, nil
 }

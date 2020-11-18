@@ -39,9 +39,7 @@ type FriendRequest struct {
 	FromID               string `bson:"omitempty"`
 	ToID                 string `bson:"omitempty"`
 	CreatedTime          int64  `bson:"omitempty"`
-	Metadata             string `bson:"omitempty"`
-	IsAccepted           bool   `bson:"omitempty"`
-	IsRejected           bool   `bson:"omitempty"`
+	Message              string `bson:"message"`
 	AcceptedOrRejectedAt int64  `bson:"omitempty"`
 }
 type Contact struct {

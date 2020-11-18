@@ -18,22 +18,22 @@ func (cl TalkHandler) UpdateSetting(ctx context.Context, in *TalkRPC.UpdateSetti
 	for _, key := range in.Keys {
 		switch key {
 		case TalkRPC.SettingKey_PRIVATE_USER_ID:
-			attToUpdate = append(attToUpdate, bson.E{Key: "PUserID", Value: in.Setting.PrivateUserID})
+			attToUpdate = append(attToUpdate, bson.E{Key: "setting.PUserID", Value: in.Setting.PrivateUserID})
 			fallthrough
 		case TalkRPC.SettingKey_ALLOW_SEARCH_BY_PRIVATE_USER_ID:
-			attToUpdate = append(attToUpdate, bson.E{Key: "asbPUserID", Value: in.Setting.AllowSearchByPrivateUserID})
+			attToUpdate = append(attToUpdate, bson.E{Key: "setting.asbPUserID", Value: in.Setting.AllowSearchByPrivateUserID})
 			fallthrough
 		case TalkRPC.SettingKey_EMAIL:
-			attToUpdate = append(attToUpdate, bson.E{Key: "Email", Value: in.Setting.Email})
+			attToUpdate = append(attToUpdate, bson.E{Key: "setting.Email", Value: in.Setting.Email})
 			fallthrough
 		case TalkRPC.SettingKey_ALLOW_SEARCH_BY_EMAIL:
-			attToUpdate = append(attToUpdate, bson.E{Key: "asbEmail", Value: in.Setting.AllowSearchByEmail})
+			attToUpdate = append(attToUpdate, bson.E{Key: "setting.asbEmail", Value: in.Setting.AllowSearchByEmail})
 			fallthrough
 		case TalkRPC.SettingKey_USER_TICKET:
-			attToUpdate = append(attToUpdate, bson.E{Key: "UTicket", Value: in.Setting.UserTicket})
+			attToUpdate = append(attToUpdate, bson.E{Key: "setting.UTicket", Value: in.Setting.UserTicket})
 			fallthrough
 		case TalkRPC.SettingKey_ALLOW_SEARCH_BY_USER_TICKET:
-			attToUpdate = append(attToUpdate, bson.E{Key: "asbUTicket", Value: in.Setting.AllowSearchByUserTicket})
+			attToUpdate = append(attToUpdate, bson.E{Key: "setting.asbUTicket", Value: in.Setting.AllowSearchByUserTicket})
 		}
 	}
 	_, dberr := userCol.UpdateOne(

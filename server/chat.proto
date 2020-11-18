@@ -132,11 +132,6 @@ message GetFriendRequestStatusResponse {
 }
 
 
-message GetALlFriendRequestedIdsRequest {}
-message GetALlFriendRequestedIdsResponse {
-    repeated FriendRequest requests = 1;
-}
-
 
 message GetAllFriendRequestIdsRequest {}
 message GetAllFriendRequestIdsResponse {
@@ -152,18 +147,16 @@ message GetAllFriendIdsResponse {
 
 
 message RejectFriendRequestRequest {
-    FriendRequest request = 1;
+    string UUID = 1;
 }
 message RejectFriendRequestResponse {
-    Contact contact = 1;
 }
 
 
 message AcceptFriendRequestRequest {
-    FriendRequest request = 1;
+    string UUID = 1;
 }
 message AcceptFriendRequestResponse {
-    Contact contact = 1;
 }
 
 
@@ -178,9 +171,6 @@ message FriendRequest {
     string fromID  =1;
     string toID = 2;
     int64 createdTIme = 3;
-    string metaData = 4;
-    bool isAccepted = 5;
-    bool isRejected = 6;
     int64 acceptedOrRejectedAt = 7;
 }
 
@@ -359,7 +349,6 @@ service TalkService {
     rpc RejectFriendRequest (RejectFriendRequestRequest) returns (RejectFriendRequestResponse);
     rpc GetAllFriendIds (GetAllFriendIdsRequest) returns (GetAllFriendIdsResponse);
     rpc GetAllFriendRequestIds (GetAllFriendRequestIdsRequest) returns (GetAllFriendRequestIdsResponse);
-    rpc GetALlFriendRequestedIds (GetALlFriendRequestedIdsRequest) returns (GetALlFriendRequestedIdsResponse);
     rpc GetFriendRequestStatus (GetFriendRequestStatusRequest) returns (GetFriendRequestStatusResponse);
     rpc GetAllBlockedIds (GetAllBlockedIdsRequest) returns (GetAllBlockedIdsResponse);
 

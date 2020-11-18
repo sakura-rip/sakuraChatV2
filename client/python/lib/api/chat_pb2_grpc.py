@@ -84,11 +84,6 @@ class TalkServiceStub(object):
                 request_serializer=chat__pb2.GetAllFriendRequestIdsRequest.SerializeToString,
                 response_deserializer=chat__pb2.GetAllFriendRequestIdsResponse.FromString,
                 )
-        self.GetALlFriendRequestedIds = channel.unary_unary(
-                '/talk.TalkService/GetALlFriendRequestedIds',
-                request_serializer=chat__pb2.GetALlFriendRequestedIdsRequest.SerializeToString,
-                response_deserializer=chat__pb2.GetALlFriendRequestedIdsResponse.FromString,
-                )
         self.GetFriendRequestStatus = channel.unary_unary(
                 '/talk.TalkService/GetFriendRequestStatus',
                 request_serializer=chat__pb2.GetFriendRequestStatusRequest.SerializeToString,
@@ -243,12 +238,6 @@ class TalkServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def GetAllFriendRequestIds(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def GetALlFriendRequestedIds(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -410,11 +399,6 @@ def add_TalkServiceServicer_to_server(servicer, server):
                     servicer.GetAllFriendRequestIds,
                     request_deserializer=chat__pb2.GetAllFriendRequestIdsRequest.FromString,
                     response_serializer=chat__pb2.GetAllFriendRequestIdsResponse.SerializeToString,
-            ),
-            'GetALlFriendRequestedIds': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetALlFriendRequestedIds,
-                    request_deserializer=chat__pb2.GetALlFriendRequestedIdsRequest.FromString,
-                    response_serializer=chat__pb2.GetALlFriendRequestedIdsResponse.SerializeToString,
             ),
             'GetFriendRequestStatus': grpc.unary_unary_rpc_method_handler(
                     servicer.GetFriendRequestStatus,
@@ -731,23 +715,6 @@ class TalkService(object):
         return grpc.experimental.unary_unary(request, target, '/talk.TalkService/GetAllFriendRequestIds',
             chat__pb2.GetAllFriendRequestIdsRequest.SerializeToString,
             chat__pb2.GetAllFriendRequestIdsResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def GetALlFriendRequestedIds(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/talk.TalkService/GetALlFriendRequestedIds',
-            chat__pb2.GetALlFriendRequestedIdsRequest.SerializeToString,
-            chat__pb2.GetALlFriendRequestedIdsResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

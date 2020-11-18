@@ -18,6 +18,7 @@ func (cl TalkHandler) CreateTag(ctx context.Context, in *TalkRPC.CreateTagReques
 	if ok == false {
 		return nil, status.New(codes.Unauthenticated, "Invalid Token").Err()
 	}
+	//TODO: TagIDのGenするかしないかの設定
 	_, dbError := userCol.UpdateOne(
 		ctx,
 		bson.M{"_id": uuid},

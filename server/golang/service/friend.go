@@ -26,9 +26,7 @@ func (cl TalkHandler) GetAllFriendIds(ctx context.Context, in *TalkRPC.GetAllFri
 func (cl TalkHandler) GetAllFriendRequestIds(ctx context.Context, in *TalkRPC.GetAllFriendRequestIdsRequest) (*TalkRPC.GetAllFriendRequestIdsResponse, error) {
 
 }
-func (cl TalkHandler) GetALlFriendRequestedIds(ctx context.Context, in *TalkRPC.GetALlFriendRequestedIdsRequest) (*TalkRPC.GetALlFriendRequestedIdsResponse, error) {
 
-}
 func (cl TalkHandler) GetFriendRequestStatus(ctx context.Context, in *TalkRPC.GetFriendRequestStatusRequest) (*TalkRPC.GetFriendRequestStatusResponse, error) {
 
 }

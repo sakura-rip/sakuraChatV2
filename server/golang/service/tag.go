@@ -55,5 +55,8 @@ func (cl TalkHandler) DeleteTag(ctx context.Context, in *TalkRPC.DeleteTagReques
 }
 
 func (cl TalkHandler) AddTagToContact(context.Context, *TalkRPC.AddTagToContactRequest) (*TalkRPC.AddTagToContactResponse, error) {
-
+	uuid, ok, _ := VerifyTokenAndGetUUID(ctx)
+	if ok == false {
+		return nil, status.New(codes.Unauthenticated, "Invalid Token").Err()
+	}
 }

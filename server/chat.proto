@@ -168,10 +168,9 @@ message AcceptFriendRequestResponse {
 
 
 message SendFriendRequestRequest {
-    FriendRequest request = 1;
+    string UUID = 1;
 }
 message SendFriendRequestResponse {
-    Contact contact = 1;
 }
 
 

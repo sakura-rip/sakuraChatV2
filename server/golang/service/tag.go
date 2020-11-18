@@ -5,12 +5,37 @@ import (
 	"github.com/ch31212y/sakuraChatV2/TalkRPC"
 	"github.com/ch31212y/sakuraChatV2/database"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo/options"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
 
 func (cl TalkHandler) GetAllTags(ctx context.Context, in *TalkRPC.GetAllTagsRequest) (*TalkRPC.GetAllTagsResponse, error) {
-
+	uuid, ok, _ := VerifyTokenAndGetUUID(ctx)
+	if ok == false {
+		return nil, status.New(codes.Unauthenticated, "Invalid Token").Err()
+	}
+	var user *database.User
+	rs := userCol.FindOne(
+		ctx,
+		bson.M{"_id": uuid},
+		options.FindOne().SetProjection(bson.D{{"tags", 1}}),
+	)
+	if rs.Decode(&user) != nil {
+		return nil, status.New(codes.Internal, "db error").Err()
+	}
+	var result []*TalkRPC.Tag
+	for key, value := range user.Tags {
+		result = append(result, &TalkRPC.Tag{
+			TagID: key,
+			Name: value.Name,
+			Description: value.Description,
+			Color: value.Color,
+			CreatorUUID: value.CreatorUUID,
+			CreatedTime: value.CreatedTime,
+		})
+	}
+	return &TalkRPC.GetAllTagsResponse{Tags: result}, nil
 }
 
 func (cl TalkHandler) CreateTag(ctx context.Context, in *TalkRPC.CreateTagRequest) (*TalkRPC.CreateTagResponse, error) {

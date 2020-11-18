@@ -36,7 +36,6 @@ func (cl TalkHandler) CreateTag(ctx context.Context, in *TalkRPC.CreateTagReques
 		return nil, status.New(codes.Internal, "db error").Err()
 	}
 	return &TalkRPC.CreateTagResponse{}, nil
-
 }
 
 func (cl TalkHandler) DeleteTag(ctx context.Context, in *TalkRPC.DeleteTagRequest) (*TalkRPC.DeleteTagResponse, error) {

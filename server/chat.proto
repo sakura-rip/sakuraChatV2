@@ -225,11 +225,6 @@ message ReportMessageRequest {
 message ReportMessageResponse{}
 
 
-message HideMessageRequest {
-    int64 messageID = 1;
-}
-message HideMessageResponse{}
-
 
 message UnsendMessageRequest {
     string  messageID = 1;
@@ -352,7 +347,6 @@ service TalkService {
     rpc SendMessage (SendMessageRequest) returns (SendMessageResponse);
     rpc EditMessage (EditMessageRequest) returns (EditMessageResponse);
     rpc UnsendMessage (UnsendMessageRequest) returns (UnsendMessageResponse);
-    rpc HideMessage (HideMessageRequest) returns (HideMessageResponse);
     rpc ReportMessage (ReportMessageRequest) returns (ReportMessageResponse);
 
     rpc GetContact (GetContactRequest) returns (GetContactResponse);

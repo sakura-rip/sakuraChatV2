@@ -162,6 +162,7 @@ message AcceptFriendRequestResponse {
 
 message SendFriendRequestRequest {
     string UUID = 1;
+    string message = 2;
 }
 message SendFriendRequestResponse {
 }
@@ -171,6 +172,7 @@ message FriendRequest {
     string fromID  =1;
     string toID = 2;
     int64 createdTIme = 3;
+    string message = 4;
     int64 acceptedOrRejectedAt = 7;
 }
 

@@ -27,10 +27,10 @@ func (cl TalkHandler) GetAllTags(ctx context.Context, in *TalkRPC.GetAllTagsRequ
 	var result []*TalkRPC.Tag
 	for key, value := range user.Tags {
 		result = append(result, &TalkRPC.Tag{
-			TagID: key,
-			Name: value.Name,
+			TagID:       key,
+			Name:        value.Name,
 			Description: value.Description,
-			Color: value.Color,
+			Color:       value.Color,
 			CreatorUUID: value.CreatorUUID,
 			CreatedTime: value.CreatedTime,
 		})
@@ -87,7 +87,7 @@ func (cl TalkHandler) AddTagToContact(ctx context.Context, in *TalkRPC.AddTagToC
 	_, dbErr := userCol.UpdateOne(
 		ctx,
 		bson.M{"_id": uuid},
-		bson.M{"$push": bson.M{"contacts." + in.TargetUUID + ".tags": in.TagID}}
+		bson.M{"$push": bson.M{"contacts." + in.TargetUUID + ".tags": in.TagID}},
 	)
 	if dbErr != nil {
 		return nil, status.New(codes.Internal, "db error").Err()

@@ -19,11 +19,11 @@ type User struct {
 type Profile struct {
 	Name        string `bson:"name"`
 	Bio         string `bson:"bio"`
-	IconPath    string `bson:"omitempty"`
-	CoverPath   string `bson:"omitempty"`
-	TwitterID   string `bson:"omitempty"`
-	InstagramID string `bson:"omitempty"`
-	GithubID    string `bson:"omitempty"`
+	IconPath    string `bson:"ipath"`
+	CoverPath   string `bson:"cpath"`
+	TwitterID   string `bson:"twID"`
+	InstagramID string `bson:"InID"`
+	GithubID    string `bson:"GhID"`
 }
 
 type Setting struct {

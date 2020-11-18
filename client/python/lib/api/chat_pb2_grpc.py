@@ -29,11 +29,6 @@ class TalkServiceStub(object):
                 request_serializer=chat__pb2.UnsendMessageRequest.SerializeToString,
                 response_deserializer=chat__pb2.UnsendMessageResponse.FromString,
                 )
-        self.HideMessage = channel.unary_unary(
-                '/talk.TalkService/HideMessage',
-                request_serializer=chat__pb2.HideMessageRequest.SerializeToString,
-                response_deserializer=chat__pb2.HideMessageResponse.FromString,
-                )
         self.ReportMessage = channel.unary_unary(
                 '/talk.TalkService/ReportMessage',
                 request_serializer=chat__pb2.ReportMessageRequest.SerializeToString,
@@ -182,12 +177,6 @@ class TalkServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def UnsendMessage(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def HideMessage(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -366,11 +355,6 @@ def add_TalkServiceServicer_to_server(servicer, server):
                     servicer.UnsendMessage,
                     request_deserializer=chat__pb2.UnsendMessageRequest.FromString,
                     response_serializer=chat__pb2.UnsendMessageResponse.SerializeToString,
-            ),
-            'HideMessage': grpc.unary_unary_rpc_method_handler(
-                    servicer.HideMessage,
-                    request_deserializer=chat__pb2.HideMessageRequest.FromString,
-                    response_serializer=chat__pb2.HideMessageResponse.SerializeToString,
             ),
             'ReportMessage': grpc.unary_unary_rpc_method_handler(
                     servicer.ReportMessage,
@@ -560,23 +544,6 @@ class TalkService(object):
         return grpc.experimental.unary_unary(request, target, '/talk.TalkService/UnsendMessage',
             chat__pb2.UnsendMessageRequest.SerializeToString,
             chat__pb2.UnsendMessageResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def HideMessage(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/talk.TalkService/HideMessage',
-            chat__pb2.HideMessageRequest.SerializeToString,
-            chat__pb2.HideMessageResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

@@ -19,8 +19,8 @@ type User struct {
 type Profile struct {
 	Name        string `bson:"name"`
 	Bio         string `bson:"bio"`
-	IconPath    string `bson:"ipath"`
-	CoverPath   string `bson:"cpath"`
+	IconPath    string `bson:"iPath"`
+	CoverPath   string `bson:"cPath"`
 	TwitterID   string `bson:"twID"`
 	InstagramID string `bson:"InID"`
 	GithubID    string `bson:"GhID"`
